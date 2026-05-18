@@ -72,17 +72,49 @@ body { margin: 0; font-family: Arial, sans-serif; }
   border-radius: 10px;
 }
 
-/* SERVICES */
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+/* SERVICES UPDATED */
+.services-section {
+  background: #f8fbff;
+  text-align: center;
 }
 
-.card {
-  background: #f4f4f4;
-  padding: 20px;
-  border-radius: 10px;
+.services-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #1b2a41;
+}
+
+.services-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.service-box {
+  background: white;
+  padding: 30px;
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.service-box:hover {
+  transform: translateY(-5px);
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  background: #0077cc;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 15px auto;
 }
 
 /* FOOTER */
@@ -143,24 +175,27 @@ footer {
 
 </div>
 
-<!-- SERVICES -->
-<div class="section">
-  <h2>Our Services</h2>
+<!-- SERVICES UPDATED -->
+<div class="section services-section">
+  <h2 class="services-title">Our Services</h2>
 
-  <div class="services">
+  <div class="services-grid">
 
-    <div class="card">
+    <div class="service-box">
+      <div class="icon">🔧</div>
       <h3>Sprinkler Repair</h3>
       <p>Fix broken heads, leaks, and system issues quickly and efficiently.</p>
     </div>
 
-    <div class="card">
-      <h3>Installation</h3>
+    <div class="service-box">
+      <div class="icon">💧</div>
+      <h3>Sprinkler Installation</h3>
       <p>Custom-designed irrigation systems built for your property.</p>
     </div>
 
-    <div class="card">
-      <h3>Maintenance</h3>
+    <div class="service-box">
+      <div class="icon">🧰</div>
+      <h3>Sprinkler Maintenance</h3>
       <p>Seasonal system checks and adjustments to keep your lawn healthy.</p>
     </div>
 
