@@ -1,735 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Rain Forest Irrigation LLC</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Rain Forest Irrigation LLC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-body { margin: 0; font-family: Arial, sans-serif; }
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
 
-/* HERO VIDEO */
-.hero {
-  position: relative;
-  height: 500px;
-  overflow: hidden;
-}
+    /* HERO VIDEO */
+    .hero {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+      background: #000;
+    }
 
-/* ✅ FIX: Make the video actually fill the hero */
-.hero video {
-  position: absolute;   /* <-- added */
-  top: 0;               /* <-- added */
-  left: 0;              /* <-- added */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;           /* <-- added */
-}
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
 
-/* ✅ FIX: Add dark overlay so text is readable */
+    /* Dark overlay so text is readable */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1;
+    }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-}
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 10px black;
+      z-index: 2;
+      padding: 0 16px;
+      width: min(900px, 92vw);
+    }
 
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 10px black;
-  z-index: 2; /* <-- added so it stays above overlay */
-}
-.hero-text p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-}
-  
-.hero-text h1 {
-  font-size: 2.5rem;
-}
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin: 0 0 10px 0;
+    }
 
-.btn {
-  background: #2e7d32;
-  color: white;
-  padding: 12px 20px;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 15px;
-  border-radius: 5px;
-}
+    .hero-text p {
+      margin: 0;
+      font-size: 1.15rem;
+    }
 
-/* SECTIONS */
-.section {
-  padding: 50px;
-}
+    .btn {
+      background: #2e7d32;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
 
-/* ABOUT SPLIT */
-.about {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
+    /* SECTIONS */
+    .section { padding: 50px; }
 
-.about-left {
-  flex: 1;
-  padding: 20px;
-}
+    /* ABOUT SPLIT */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-.about-right {
-  flex: 1;
-  text-align: center;
-}
+    .about-left {
+      flex: 1;
+      padding: 20px;
+      min-width: 300px;
+    }
 
-.about-right img {
-  width: 90%;
-  border-radius: 10px;
-}
+    .about-right {
+      flex: 1;
+      text-align: center;
+      min-width: 300px;
+      padding: 20px;
+    }
 
-/* SERVICES UPDATED */
-.services-section {
-  background: #f8fbff;
-  text-align: center;
-}
+    .about-right img {
+      width: 100%;
+      max-width: 560px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
 
-.services-title {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: #1b2a41;
-}
+    /* SERVICES UPDATED (BLUE) */
+    .services-section {
+      background: #f8fbff;
+      text-align: center;
+    }
 
-.services-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
+    .services-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #1b2a41;
+    }
 
-.service-box {
-  background: white;
-  padding: 30px;
-  max-width: 300px;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  transition: 0.3s;
-}
+    .services-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
 
-.service-box:hover {
-  transform: translateY(-5px);
-}
+    .service-box {
+      background: white;
+      padding: 30px;
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+      text-align: left;
+    }
 
-.icon {
-  width: 60px;
-  height: 60px;
-  background: #0077cc;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  margin: 0 auto 15px auto;
-}
+    .service-box:hover { transform: translateY(-5px); }
 
-/* ===== NEW: SERVICES PHOTO + RIGHT PANEL SECTION ===== */
-.services-showcase {
-  padding: 0;
-  background: #0b3d2e;
-}
+    .icon {
+      width: 60px;
+      height: 60px;
+      background: #0077cc;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 0 15px 0;
+    }
 
-.showcase-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 520px;
-}
+    /* ===== SERVICES PHOTO + RIGHT PANEL SECTION ===== */
+    .services-showcase {
+      padding: 0;
+      background: #0b3d2e;
+    }
 
-/* LEFT: PHOTO TILES */
-.showcase-left {
-  flex: 1.2;
-  min-width: 320px;
-  padding: 40px;
-  background: rgba(0,0,0,0.15);
-}
+    .showcase-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 520px;
+    }
 
-.tile-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 10px;
-}
+    /* LEFT: PHOTO TILES */
+    .showcase-left {
+      flex: 1.2;
+      min-width: 320px;
+      padding: 40px;
+      background: rgba(0,0,0,0.15);
+    }
 
-.tile {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  cursor: pointer;
-  min-height: 180px;
-  outline: none;
-}
+    .tile-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+    }
 
-.tile.large { min-height: 420px; }
-.tile.small { min-height: 205px; }
+    .tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+      min-height: 180px;
+      outline: none;
+    }
 
-.tile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1);
-  transition: transform 0.35s ease;
-}
+    .tile.large { min-height: 420px; }
+    .tile.small { min-height: 205px; }
 
-.tile:hover img,
-.tile:focus img {
-  transform: scale(1.08);
-}
+    .tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform 0.35s ease;
+    }
 
-/* Dark overlay for readability */
-.tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.10));
-}
+    .tile:hover img,
+    .tile:focus img {
+      transform: scale(1.08);
+    }
 
-.tile-content {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
-  z-index: 2;
-  color: #fff;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-}
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.10));
+    }
 
-.tile-content h3 {
-  margin: 0 0 6px 0;
-  font-size: 1.35rem;
-  letter-spacing: 0.5px;
-}
+    .tile-content {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
 
-.tile-content .sub {
-  margin: 0 0 10px 0;
-  font-size: 0.95rem;
-  color: #bfe3ff;
-  font-weight: bold;
-}
+    .tile-content h3 {
+      margin: 0 0 6px 0;
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+    }
 
-.tile-content p {
-  margin: 0 0 14px 0;
-  font-size: 0.95rem;
-  line-height: 1.35;
-}
+    .tile-content .sub {
+      margin: 0 0 10px 0;
+      font-size: 0.95rem;
+      color: #bfe3ff;
+      font-weight: bold;
+    }
 
-.tile-btn {
-  display: inline-block;
-  background: #1e88e5;
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  text-decoration: none;
-}
+    .tile-content p {
+      margin: 0 0 14px 0;
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
 
-.tile-btn:hover { background: #1565c0; }
+    .tile-btn {
+      display: inline-block;
+      background: #1e88e5;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-/* RIGHT: TEXT PANEL */
-.showcase-right {
-  flex: 1;
-  min-width: 320px;
-  padding: 60px 50px;
-  color: white;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(0,119,204,0.35), transparent 45%),
-    radial-gradient(circle at 80% 60%, rgba(46,125,50,0.25), transparent 50%),
-    linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    url('https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?auto=format&fit=crop&w=1400&q=80');
-  background-size: cover;
-  background-position: center;
-}
+    .tile-btn:hover { background: #1565c0; }
 
-.showcase-right h2 {
-  margin-top: 0;
-  font-size: 2.1rem;
-  line-height: 1.1;
-}
+    /* RIGHT: TEXT PANEL */
+    .showcase-right {
+      flex: 1;
+      min-width: 320px;
+      padding: 60px 50px;
+      color: white;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(0,119,204,0.35), transparent 45%),
+        radial-gradient(circle at 80% 60%, rgba(46,125,50,0.25), transparent 50%),
+        linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+        url('https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+    }
 
-.showcase-right .tagline {
-  color: #8fd3ff;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  margin: 10px 0 18px 0;
-}
+    .showcase-right h2 {
+      margin-top: 0;
+      font-size: 2.1rem;
+      line-height: 1.1;
+    }
 
-.showcase-right p {
-  max-width: 560px;
-  line-height: 1.55;
-  margin: 0 0 16px 0;
-}
+    .showcase-right .tagline {
+      color: #8fd3ff;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin: 10px 0 18px 0;
+    }
 
-.checklist {
-  list-style: none;
-  padding: 0;
-  margin: 22px 0 26px 0;
-}
+    .showcase-right p {
+      max-width: 560px;
+      line-height: 1.55;
+      margin: 0 0 16px 0;
+    }
 
-.checklist li {
-  margin: 12px 0;
-  padding-left: 34px;
-  position: relative;
-  font-weight: 600;
-}
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 26px 0;
+    }
 
-.checklist li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(30,136,229,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-}
+    .checklist li {
+      margin: 12px 0;
+      padding-left: 34px;
+      position: relative;
+      font-weight: 600;
+    }
 
-.cta-yellow {
-  display: inline-block;
-  background: #1e88e5; /* blue CTA */
-  color: white;
-  padding: 12px 18px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(30,136,229,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
 
-.cta-yellow:hover { background: #1565c0; }
+    .cta-yellow {
+      display: inline-block;
+      background: #1e88e5;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-/* LIGHTBOX (click-to-zoom) */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
+    .cta-yellow:hover { background: #1565c0; }
 
-.lightbox.open { display: flex; }
+    /* LIGHTBOX (click-to-zoom) */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-.lightbox-inner {
-  position: relative;
-  max-width: 1000px;
-  width: 95%;
-  max-height: 85vh;
-}
+    .lightbox.open { display: flex; }
 
-.lightbox-inner img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  max-height: 85vh;
-  object-fit: contain;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
+    .lightbox-inner {
+      position: relative;
+      max-width: 1000px;
+      width: 95%;
+      max-height: 85vh;
+    }
 
-.lightbox-close {
-  position: absolute;
-  top: -45px;
-  right: 0;
-  color: #fff;
-  font-size: 34px;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-}
+    .lightbox-inner img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      max-height: 85vh;
+      object-fit: contain;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
 
-.lightbox-caption {
-  color: #fff;
-  margin-top: 10px;
-  text-align: center;
-  opacity: 0.9;
-}
+    .lightbox-close {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      color: #fff;
+      font-size: 34px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+    }
 
-/* FOOTER */
-footer {
-  background: #1b5e20;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
+    .lightbox-caption {
+      color: #fff;
+      margin-top: 10px;
+      text-align: center;
+      opacity: 0.9;
+    }
 
-/* Mobile spacing */
-@media (max-width: 900px) {
-  .showcase-right { padding: 40px 24px; }
-  .showcase-left { padding: 30px 18px; }
-  .tile.large { min-height: 320px; }
-}
-</style>
+    /* REVIEWS SECTION (Elfsight container styling) */
+    .reviews-section {
+      background: #f5f7fa;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .reviews-section h2 {
+      font-size: 2.2rem;
+      margin: 0 0 40px 0;
+      color: #333;
+    }
+    .elfsight-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1b5e20;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Mobile spacing */
+    @media (max-width: 900px) {
+      .showcase-right { padding: 40px 24px; }
+      .showcase-left { padding: 30px 18px; }
+      .tile.large { min-height: 320px; }
+      .hero { height: 420px; }
+      .hero-text h1 { font-size: 2.0rem; }
+      .hero-text p { font-size: 1.05rem; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HERO VIDEO -->
-<div class="hero">
+  <!-- HERO VIDEO (YOUR MP4) -->
+  <div class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="7318623-hd_1920_1080_30fps.mp4" type="video/mp4" />
+    </video>
 
-<video autoplay muted loop playsinline>
-  <source src="7318623-hd_1920_1080_30fps.mp4" type="video/mp4">
-</video>
-
-
-  <div class="hero-text">
-    <h1>Rain Forest Irrigation LLC</h1>
-    <p>Serving Brownsville &amp; The Rio Grande Valley</p>
-    <a href="#contact" class="btn">Call Now</a>
-  </div>
-</div>
-
-<!-- ABOUT SECTION -->
-<div class="section about">
-
-  <div class="about-left">
-    <h2>About Rain Forest Irrigation LLC</h2>
-
-    <p>
-      Rain Forest Irrigation LLC is a veteran-owned and operated business based in Brownsville, Texas.
-      We specialize in providing high-quality irrigation and landscaping solutions across the Rio Grande Valley,
-      bringing the same discipline, precision, and dedication to our community that we used while serving our country.
-    </p>
-
-    <p>
-      Our mission is simple: to keep South Texas green through efficient, reliable, and expertly designed water systems.
-    </p>
-
-    <h3>Why Choose Us?</h3>
-
-    <p><strong>Veteran-Owned Integrity:</strong> We operate with a commitment to honesty and hard work. When we give you a quote or a timeline, we stick to it.</p>
-
-    <p><strong>Customer-First Reputation:</strong> Our clients consistently highlight our team as exceptionally helpful. We don’t just install systems; we take the time to ensure our customers understand how to manage their water usage effectively.</p>
-
-    <p><strong>Top-Rated Service:</strong> We are proud of our reputation in the RGV. Our reviews reflect a history of satisfied homeowners and businesses who appreciate our attention to detail and professional approach.</p>
-
-    <p><strong>Local Expertise:</strong> Living and working in Brownsville, we understand the specific drainage and irrigation challenges posed by the South Texas climate.</p>
+    <div class="hero-text">
+      <h1>Rain Forest Irrigation LLC</h1>
+      <p>Serving Brownsville &amp; The Rio Grande Valley</p>
+      <a href="#contact" class="btn">Call Now</a>
+    </div>
   </div>
 
-  <div class="about-right">
-    <img src="https://lh3.googleusercontent.com/p/AF1QipMzUXOfPD2EA62PSjCYQGnSBSwJD3POqcKi7HcL=w800-h600-k-no" alt="Owner Photo">
-  </div>
+  <!-- ABOUT SECTION -->
+  <div class="section about">
+    <div class="about-left">
+      <h2>Rain Forest Irrigation LLC</h2>
 
-</div>
+      <p>
+        Rain Forest Irrigation LLC is a veteran-owned and operated business based in Brownsville, Texas.
+        We specialize in providing high-quality irrigation and landscaping solutions across the Rio Grande Valley,
+        bringing the same discipline, precision, and dedication to our community that we used while serving our country.
+      </p>
 
-<!-- SERVICES UPDATED -->
-<div class="section services-section">
-  <h2 class="services-title">Our Services</h2>
+      <p>
+        Our mission is simple: to keep South Texas green through efficient, reliable, and expertly designed water systems.
+      </p>
 
-  <div class="services-grid">
+      <h3>Why Choose Us?</h3>
 
-    <div class="service-box">
-      <div class="icon">🔧</div>
-      <h3>Sprinkler Repair</h3>
-      <p>Fix broken heads, leaks, and system issues quickly and efficiently.</p>
+      <p><strong>Veteran-Owned Integrity:</strong> We operate with a commitment to honesty and hard work. When we give you a quote or a timeline, we stick to it.</p>
+
+      <p><strong>Customer-First Reputation:</strong> Our clients consistently highlight our team as exceptionally helpful. We don’t just install systems; we take the time to ensure our customers understand how to manage their water usage effectively.</p>
+
+      <p><strong>Top-Rated Service:</strong> We are proud of our reputation in the RGV. Our reviews reflect a history of satisfied homeowners and businesses who appreciate our attention to detail and professional approach.</p>
+
+      <p><strong>Local Expertise:</strong> Living and working in Brownsville, we understand the specific drainage and irrigation challenges posed by the South Texas climate.</p>
     </div>
 
-    <div class="service-box">
-      <div class="icon">💧</div>
-      <h3>Sprinkler Installation</h3>
-      <p>Custom-designed irrigation systems built for your property.</p>
+    <!-- YOUR NEW IMAGE -->
+    <div class="about-right">
+      <img src="edited photo.jpg" alt="Rain Forest Irrigation LLC - Owner" />
     </div>
-
-    <div class="service-box">
-      <div class="icon">🧰</div>
-      <h3>Sprinkler Maintenance</h3>
-      <p>Seasonal system checks and adjustments to keep your lawn healthy.</p>
-    </div>
-
   </div>
-</div>
 
-<!-- NEW: PHOTO TILES + RIGHT PANEL (below Our Services) -->
-<section class="services-showcase">
-  <div class="showcase-wrap">
+  <!-- SERVICES UPDATED -->
+  <div class="section services-section">
+    <h2 class="services-title">Our Services</h2>
 
-    <!-- LEFT: 3 PHOTO TILES (hover zoom + click to enlarge) -->
-    <div class="showcase-left">
-      <div class="tile-grid">
+    <div class="services-grid">
+      <div class="service-box">
+        <div class="icon">🔧</div>
+        <h3>Sprinkler Repair</h3>
+        <p>Fix broken heads, leaks, and system issues quickly and efficiently.</p>
+      </div>
 
-        <!-- BIG TILE -->
-        <div class="tile large" tabindex="0"
-             data-full="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=80"
-             data-caption="Sprinkler Repair — Efficient, reliable repairs to keep your system running smoothly.">
-          <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80" alt="Sprinkler repair work on irrigation lines">
-          <div class="tile-content">
-            <h3>SPRINKLER REPAIR</h3>
-            <div class="sub">Efficient sprinkler repair services</div>
-            <p>
-              Fast troubleshooting and repairs for broken heads, leaks, valve issues, and coverage problems.
-            </p>
-            <a class="tile-btn" href="#contact">Request Service</a>
-          </div>
-        </div>
+      <div class="service-box">
+        <div class="icon">💧</div>
+        <h3>Sprinkler Installation</h3>
+        <p>Custom-designed irrigation systems built for your property.</p>
+      </div>
 
-        <!-- RIGHT COLUMN: 2 SMALL TILES -->
-        <div style="display:grid; gap:10px;">
-          <div class="tile small" tabindex="0"
-               data-full="https://images.unsplash.com/photo-1598514983318-2f64f8f4b7f0?auto=format&fit=crop&w=1600&q=80"
-               data-caption="Sprinkler Installation — Custom-designed systems for full coverage and water efficiency.">
-            <img src="https://images.unsplash.com/photo-1598514983318-2f64f8f4b7f0?auto=format&fit=crop&w=800&q=80" alt="Sprinkler spraying over a healthy lawn">
-            <div class="tile-content">
-              <h3>INSTALLATION</h3>
-              <div class="sub">Tailored solutions</div>
-              <p>Design + install systems built for your property.</p>
-              <a class="tile-btn" href="#contact">Get a Quote</a>
-            </div>
-          </div>
-
-          <div class="tile small" tabindex="0"
-               data-full="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80"
-               data-caption="Maintenance — Seasonal checks and tuning to prevent costly issues.">
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Well-maintained green lawn">
-            <div class="tile-content">
-              <h3>MAINTENANCE</h3>
-              <div class="sub">Year-round performance</div>
-              <p>System checks, adjustments, and optimization.</p>
-              <a class="tile-btn" href="#contact">Schedule</a>
-            </div>
-          </div>
-        </div>
-
+      <div class="service-box">
+        <div class="icon">🧰</div>
+        <h3>Sprinkler Maintenance</h3>
+        <p>Seasonal system checks and adjustments to keep your lawn healthy.</p>
       </div>
     </div>
-
-    <!-- RIGHT: SAME LAYOUT STYLE (original copy for your business) -->
-    <div class="showcase-right">
-      <h2>A Reliable Brownsville Irrigation Company</h2>
-      <div class="tagline">Tailored solutions for every lawn</div>
-
-      <p>
-        Based in Brownsville, Rain Forest Irrigation LLC proudly serves homeowners and businesses across the Rio Grande Valley.
-        Our mission is to design, repair, and maintain efficient irrigation systems that keep South Texas landscapes healthy and green.
-      </p>
-
-      <p>
-        Whether you need a quick repair, a new installation, or seasonal maintenance, we focus on water-smart solutions that protect your property and your budget.
-      </p>
-
-      <ul class="checklist">
-        <li>Experienced technicians who understand your irrigation needs</li>
-        <li>Dedicated to exceeding expectations and delivering peace of mind</li>
-        <li>Custom designs that enhance both beauty and long-term lawn health</li>
-      </ul>
-
-      <a class="cta-yellow" href="#contact">Schedule Appointment</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- GOOGLE REVIEWS (PREMIUM STYLE) -->
-<div class="section reviews-section">
-
-  <h2 class="reviews-header">
-    Google Reviewed & Trusted — See What Our Clients Are Saying
-  </h2>
-
-  <div class="reviews-summary">
-    <h3>EXCELLENT</h3>
-
-    <div class="stars">★★★★★</div>
-
-    <p>Based on 5 Star Reviews</p>
-
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo">
   </div>
 
-  <div class="reviews-grid">
+  <!-- PHOTO TILES + RIGHT PANEL (hover zoom + click to enlarge) -->
+  <section class="services-showcase">
+    <div class="showcase-wrap">
 
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p>Great service, very professional and fast. Fixed my sprinkler issue the same day!</p>
+      <div class="showcase-left">
+        <div class="tile-grid">
+
+          <!-- BIG TILE -->
+          <div class="tile large" tabindex="0"
+               data-full="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=80"
+               data-caption="Sprinkler Repair — Efficient, reliable repairs to keep your system running smoothly.">
+            <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80"
+                 alt="Sprinkler repair work on irrigation lines">
+            <div class="tile-content">
+              <h3>SPRINKLER REPAIR</h3>
+              <div class="sub">Efficient sprinkler repair services</div>
+              <p>Fast troubleshooting and repairs for broken heads, leaks, valve issues, and coverage problems.</p>
+              <a class="tile-btn" href="#contact">Request Service</a>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: 2 SMALL TILES -->
+          <div style="display:grid; gap:10px;">
+            <div class="tile small" tabindex="0"
+                 data-full="https://images.unsplash.com/photo-1598514983318-2f64f8f4b7f0?auto=format&fit=crop&w=1600&q=80"
+                 data-caption="Sprinkler Installation — Custom-designed systems for full coverage and water efficiency.">
+              <img src="https://images.unsplash.com/photo-1598514983318-2f64f8f4b7f0?auto=format&fit=crop&w=800&q=80"
+                   alt="Sprinkler spraying over a healthy lawn">
+              <div class="tile-content">
+                <h3>INSTALLATION</h3>
+                <div class="sub">Tailored solutions</div>
+                <p>Design + install systems built for your property.</p>
+                <a class="tile-btn" href="#contact">Get a Quote</a>
+              </div>
+            </div>
+
+            <div class="tile small" tabindex="0"
+                 data-full="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80"
+                 data-caption="Maintenance — Seasonal checks and tuning to prevent costly issues.">
+              <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80"
+                   alt="Well-maintained green lawn">
+              <div class="tile-content">
+                <h3>MAINTENANCE</h3>
+                <div class="sub">Year-round performance</div>
+                <p>System checks, adjustments, and optimization.</p>
+                <a class="tile-btn" href="#contact">Schedule</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="showcase-right">
+        <h2>A Reliable Brownsville Irrigation Company</h2>
+        <div class="tagline">Tailored solutions for every lawn</div>
+
+        <p>
+          Based in Brownsville, Rain Forest Irrigation LLC proudly serves homeowners and businesses across the Rio Grande Valley.
+          Our mission is to design, repair, and maintain efficient irrigation systems that keep South Texas landscapes healthy and green.
+        </p>
+
+        <p>
+          Whether you need a quick repair, a new installation, or seasonal maintenance, we focus on water-smart solutions that protect your property and your budget.
+        </p>
+
+        <ul class="checklist">
+          <li>Experienced technicians who understand your irrigation needs</li>
+          <li>Dedicated to exceeding expectations and delivering peace of mind</li>
+          <li>Custom designs that enhance both beauty and long-term lawn health</li>
+        </ul>
+
+        <a class="cta-yellow" href="#contact">Schedule Appointment</a>
+      </div>
+
     </div>
+  </section>
 
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p>Highly recommend! Honest, reliable, and knows exactly what they’re doing.</p>
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <div class="lightbox-close" id="lightboxClose" aria-label="Close">×</div>
+      <img id="lightboxImg" alt="Expanded service photo">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
-
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p>Fast response and quality work. Very satisfied with the results.</p>
-    </div>
-
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p>Great experience overall. Very knowledgeable and professional service.</p>
-    </div>
-
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p>Excellent work! Will definitely use again and recommend to others.</p>
-    </div>
-
   </div>
 
-  <a href="https://www.google.com/search?q=Rain+Forest+Irrigation+LLC+Brownsville+TX" 
-     class="review-btn" target="_blank">
-    View Reviews on Google
-  </a>
-
-</div>
-
-/* REVIEWS PREMIUM STYLE */
-.reviews-section {
-  background: #f5f7fa;
-  text-align: center;
-}
-
-.reviews-header {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.reviews-summary {
-  margin-bottom: 40px;
-}
-
-.reviews-summary h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.stars {
-  font-size: 28px;
-  color: #FFD700;
-  margin: 10px 0;
-}
-
-.google-logo {
-  width: 80px;
-  margin-top: 10px;
-}
-
-.reviews-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.review-card {
-  background: white;
-  padding: 20px;
-  width: 260px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  text-align: left;
-}
-
-.review-stars {
-  color: #FFD700;
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-.review-btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 12px 20px;
-  background: #0077cc;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.review-btn:hover {
-  background: #005fa3;
-}
-
-
-  
-
-
-  
-<!-- LIGHTBOX MODAL -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <div class="lightbox-inner">
-    <div class="lightbox-close" id="lightboxClose" aria-label="Close">×</div>
-    <img id="lightboxImg" alt="Expanded service photo">
-    <div class="lightbox-caption" id="lightboxCaption"></div>
+  <!-- LIVE GOOGLE REVIEWS (ELFSIGHT) -->
+  <div class="reviews-section">
+    <h2>Google Reviewed &amp; Trusted — See What Our Clients Are Saying</h2>
+    <div class="elfsight-wrap">
+      <div class="elfsight-app-7303d924-e97c-4c9c-a946-c2bffc65dd6e" data-elfsight-app-lazy></div>
+    </div>
   </div>
-</div>
 
-<!-- CONTACT -->
-<div class="section" id="contact">
-  <h2>Contact Us</h2>
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Call Now:</strong> (956) XXX-XXXX</p>
+    <p>Serving Brownsville &amp; The Rio Grande Valley</p>
+  </div>
 
-  <p><strong>Call Now:</strong> (956) XXX-XXXX</p>
-  <p>Serving Brownsville &amp; The Rio Grande Valley</p>
-</div>
+  <footer>
+    <p>© 2026 Rain Forest Irrigation LLC</p>
+  </footer>
 
-<footer>
-  <p>© 2026 Rain Forest Irrigation LLC</p>
-</footer>
+  <!-- Elfsight Google Reviews (script ONCE, near bottom) -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
 
-<script>
-  // Simple lightbox (click-to-zoom) pattern using vanilla JS
-  const tiles = document.querySelectorAll('.tile');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
-  const lightboxClose = document.getElementById('lightboxClose');
+  <script>
+    // Lightbox (click-to-zoom)
+    const tiles = document.querySelectorAll('.tile');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
 
-  function openLightbox(src, caption) {
-    lightboxImg.src = src;
-    lightboxCaption.textContent = caption || '';
-    lightbox.classList.add('open');
-    lightbox.setAttribute('aria-hidden', 'false');
-  }
+    function openLightbox(src, caption) {
+      lightboxImg.src = src;
+      lightboxCaption.textContent = caption || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
 
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImg.src = '';
-    lightboxCaption.textContent = '';
-  }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      lightboxCaption.textContent = '';
+    }
 
-  tiles.forEach(tile => {
-    tile.addEventListener('click', () => {
-      const src = tile.getAttribute('data-full');
-      const caption = tile.getAttribute('data-caption');
-      if (src) openLightbox(src, caption);
-    });
-
-    tile.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
+    tiles.forEach(tile => {
+      tile.addEventListener('click', () => {
         const src = tile.getAttribute('data-full');
         const caption = tile.getAttribute('data-caption');
         if (src) openLightbox(src, caption);
+      });
+
+      tile.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const src = tile.getAttribute('data-full');
+          const caption = tile.getAttribute('data-caption');
+          if (src) openLightbox(src, caption);
+        }
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+        closeLightbox();
       }
     });
-  });
-
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
-      closeLightbox();
-    }
-  });
-</script>
+  </script>
 
 </body>
 </html>
+``
