@@ -401,6 +401,84 @@
       .hero-text h1 { font-size: 2.0rem; }
       .hero-text p { font-size: 1.05rem; }
     }
+    
+.photo-hover-section {
+  display: flex;
+  height: 500px;
+  overflow: hidden;
+}
+    
+.photo-card {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  transition: flex 0.5s ease;
+  cursor: pointer;
+}
+    
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* default big image */
+.photo-card.active {
+  flex: 3;
+}
+
+/* hover expand */
+.photo-card:hover {
+  flex: 3;
+}
+
+.photo-hover-section:hover .photo-card:not(:hover) {
+  flex: 1;
+}
+
+/* dark overlay */
+.photo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+/* hidden text */
+.photo-overlay {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.3s;
+}
+
+/* show text on hover */
+.photo-card:hover .photo-overlay,
+.photo-card.active .photo-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo-overlay h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.photo-overlay h4 {
+  color: #ffd54f;
+  margin: 5px 0;
+}
+
+.photo-overlay p {
+  font-size: 0.95rem;
+}
+
+
+    
   </style>
 </head>
 
@@ -476,82 +554,50 @@
     </div>
   </div>
 
-  <!-- PHOTO TILES + RIGHT PANEL (hover zoom + click to enlarge) -->
-  <section class="services-showcase">
-    <div class="showcase-wrap">
+<!-- INTERACTIVE PHOTO SECTION -->
+<section class="photo-hover-section">
 
-      <div class="showcase-left">
-        <div class="tile-grid">
+  <!-- BIG IMAGE -->
+  <div class="photo-card active">
+    <img src="image1.jpg">
 
-          <!-- BIG TILE -->
-          <div class="tile large" tabindex="0"
-               data-full="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=80"
-               data-caption="Sprinkler Repair — Efficient, reliable repairs to keep your system running smoothly.">
-            <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80"
-                 alt="Sprinkler repair work on irrigation lines">
-            <div class="tile-content">
-              <h3>SPRINKLER REPAIR</h3>
-              <div class="sub">Efficient sprinkler repair services</div>
-              <p>Fast troubleshooting and repairs for broken heads, leaks, valve issues, and coverage problems.</p>
-              <a class="tile-btn" href="#contact">Request Service</a>
-            </div>
-          </div>
-
-          <!-- RIGHT COLUMN: 2 SMALL TILES -->
-          <div style="display:grid; gap:10px;">
-            <div class="tile small" tabindex="0"
-                 data-full="https://images.unsplash.com/photo-1598514983318-2f64f8f4b7f0?auto=format&fit=crop&w=1600&q=80"
-                 data-caption="Sprinkler Installation — Custom-designed systems for full coverage and water efficiency.">
-              <img src="https://images.unsplash.com/photo-1598514983318-2f64f8f4b7f0?auto=format&fit=crop&w=800&q=80"
-                   alt="Sprinkler spraying over a healthy lawn">
-              <div class="tile-content">
-                <h3>INSTALLATION</h3>
-                <div class="sub">Tailored solutions</div>
-                <p>Design + install systems built for your property.</p>
-                <a class="tile-btn" href="#contact">Get a Quote</a>
-              </div>
-            </div>
-
-            <div class="tile small" tabindex="0"
-                 data-full="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80"
-                 data-caption="Maintenance — Seasonal checks and tuning to prevent costly issues.">
-              <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80"
-                   alt="Well-maintained green lawn">
-              <div class="tile-content">
-                <h3>MAINTENANCE</h3>
-                <div class="sub">Year-round performance</div>
-                <p>System checks, adjustments, and optimization.</p>
-                <a class="tile-btn" href="#contact">Schedule</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="showcase-right">
-        <h2>A Reliable Brownsville Irrigation Company</h2>
-        <div class="tagline">Tailored solutions for every lawn</div>
-
-        <p>
-          Based in Brownsville, Rain Forest Irrigation LLC proudly serves homeowners and businesses across the Rio Grande Valley.
-          Our mission is to design, repair, and maintain efficient irrigation systems that keep South Texas landscapes healthy and green.
-        </p>
-
-        <p>
-          Whether you need a quick repair, a new installation, or seasonal maintenance, we focus on water-smart solutions that protect your property and your budget.
-        </p>
-
-        <ul class="checklist">
-          <li>Experienced technicians who understand your irrigation needs</li>
-          <li>Dedicated to exceeding expectations and delivering peace of mind</li>
-          <li>Custom designs that enhance both beauty and long-term lawn health</li>
-        </ul>
-
-        <a class="cta-yellow" href="#contact">Schedule Appointment</a>
-      </div>
-
+    <div class="photo-overlay">
+      <h2>SPRINKLER REPAIR</h2>
+      <h4>Efficient Sprinkler Repair Services</h4>
+      <p>
+        Ensure your lawn stays hydrated with fast and reliable repair services.
+      </p>
     </div>
+  </div>
+
+  <!-- SMALL IMAGE 1 -->
+  <div class="photo-card">
+    <img src="image2.jpg">
+
+    <div class="photo-overlay">
+      <h2>INSTALLATION</h2>
+      <h4>Custom System Design</h4>
+      <p>
+        Professional irrigation systems built specifically for your property.
+      </p>
+    </div>
+  </div>
+
+  <!-- SMALL IMAGE 2 -->
+  <div class="photo-card">
+    <img src="image3.jpg">
+
+    <div class="photo-overlay">
+      <h2>MAINTENANCE</h2>
+      <h4>Keep Systems Running</h4>
+      <p>
+        Seasonal adjustments and system checks for long-term performance.
+      </p>
+    </div>
+  </div>
+
+</section>
+    
   </section>
 
   <!-- LIGHTBOX MODAL -->
