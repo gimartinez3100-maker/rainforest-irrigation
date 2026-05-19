@@ -533,38 +533,131 @@ footer {
   </div>
 </section>
 
-<!-- GOOGLE REVIEWS -->
-<div class="section" style="background:#f9fbfd; text-align:center;">
-  <h2>Customer Reviews</h2>
+<!-- GOOGLE REVIEWS (PREMIUM STYLE) -->
+<div class="section reviews-section">
 
-  <div style="font-size: 30px; color: #FFD700;">
-    ★★★★★
+  <h2 class="reviews-header">
+    Google Reviewed & Trusted — See What Our Clients Are Saying
+  </h2>
+
+  <div class="reviews-summary">
+    <h3>EXCELLENT</h3>
+
+    <div class="stars">★★★★★</div>
+
+    <p>Based on 5 Star Reviews</p>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo">
   </div>
 
-  <p style="font-size: 18px; margin-top: 10px;">
-    Rated 5 Stars on Google
-  </p>
+  <div class="reviews-grid">
 
-  <div style="max-width: 700px; margin: 30px auto; text-align: left;">
-
-    <div style="background:white; padding:20px; margin-bottom:20px;
-                border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-      <strong>★★★★★</strong>
-      <p>"Great service, very professional and fast. Fixed my sprinkler issue the same day!"</p>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p>Great service, very professional and fast. Fixed my sprinkler issue the same day!</p>
     </div>
 
-    <div style="background:white; padding:20px; margin-bottom:20px;
-                border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-      <strong>★★★★★</strong>
-      <p>"Highly recommend! Honest, reliable, and knows exactly what they’re doing."</p>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p>Highly recommend! Honest, reliable, and knows exactly what they’re doing.</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p>Fast response and quality work. Very satisfied with the results.</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p>Great experience overall. Very knowledgeable and professional service.</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p>Excellent work! Will definitely use again and recommend to others.</p>
     </div>
 
   </div>
-<a href="https://www.google.com/search?q=Rain+Forest+Irrigation+LLC+Brownsville+TX" target="_blank">
-  View Reviews on Google
-</a>
-``
+
+  <a href="https://www.google.com/search?q=Rain+Forest+Irrigation+LLC+Brownsville+TX" 
+     class="review-btn" target="_blank">
+    View Reviews on Google
+  </a>
+
 </div>
+
+/* REVIEWS PREMIUM STYLE */
+.reviews-section {
+  background: #f5f7fa;
+  text-align: center;
+}
+
+.reviews-header {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.reviews-summary {
+  margin-bottom: 40px;
+}
+
+.reviews-summary h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.stars {
+  font-size: 28px;
+  color: #FFD700;
+  margin: 10px 0;
+}
+
+.google-logo {
+  width: 80px;
+  margin-top: 10px;
+}
+
+.reviews-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.review-card {
+  background: white;
+  padding: 20px;
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.review-stars {
+  color: #FFD700;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.review-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 20px;
+  background: #0077cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.review-btn:hover {
+  background: #005fa3;
+}
+
+
+  
+
+
   
 <!-- LIGHTBOX MODAL -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
