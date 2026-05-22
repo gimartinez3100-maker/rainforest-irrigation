@@ -178,6 +178,11 @@ body {
       flex-wrap: wrap;
       align-items: center;
     }
+    
+.about {
+  background: #eef2f5;   /* ✅ slightly richer grey */
+}
+
 
  /* ABOUT SECTION UPGRADE */
 .about-left {
@@ -250,10 +255,13 @@ body {
 }
     
     /* SERVICES UPDATED (BLUE) */
-    .services-section {
-      background: #f8fbff;
-      text-align: center;
-    }
+
+.services-section {
+  background: linear-gradient(to right, #f2f7ff, #e8f0ff);
+  text-align: center;
+  padding: 80px 20px;
+}
+
 
    .services-title {
   font-size: 3rem;          /* ✅ BIGGER TITLE */
@@ -285,6 +293,9 @@ body {
   transition: 0.3s;
   text-align: center;
 }
+   .service-box {
+  border-top: 4px solid #2e7d32;   /* ✅ ties to your green branding */
+} 
 
     .service-box:hover { transform: translateY(-5px); }
 
