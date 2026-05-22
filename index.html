@@ -408,7 +408,75 @@
       text-align: center;
       opacity: 0.9;
     }
+/* WHY CHOOSE US SECTION */
+.why-section {
+  background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  position: relative;
+  color: white;
+  padding: 80px 20px;
+}
 
+/* dark overlay */
+.why-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.why-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.why-title {
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+/* GRID */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* BOX */
+.why-box {
+  text-align: center;
+}
+
+/* ICON */
+.why-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+.why-box h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.why-box p {
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 280px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+   
     /* REVIEWS SECTION (Elfsight container styling) */
     .reviews-section {
       background: #f5f7fa;
@@ -681,6 +749,76 @@
 
   </section>
 
+<!-- WHY CHOOSE US -->
+<section class="why-section">
+
+  <div class="why-container">
+
+    <h2 class="why-title">Why Choose Us</h2>
+
+    <div class="why-grid">
+
+      <div class="why-box">
+        <div class="why-icon">🍃</div>
+        <h3>Eco Friendly</h3>
+        <p>
+          All of our work is planned carefully to ensure efficient water usage
+          and a healthier landscape for your property.
+        </p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">🤝</div>
+        <h3>Trusted & Honest</h3>
+        <p>
+          We believe in transparency and clear communication, making sure you
+          understand every part of your project before we begin.
+        </p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">🌿</div>
+        <h3>Detail‑Oriented</h3>
+        <p>
+          We take pride in precise work, ensuring every system is installed or
+          repaired correctly for long-lasting results.
+        </p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">📘</div>
+        <h3>Certified Experts</h3>
+        <p>
+          Our team has the knowledge and experience to handle any irrigation
+          challenge with confidence and professionalism.
+        </p>
+      </div>
+
+      <!-- ✅ REPLACED "Safety First" -->
+      <div class="why-box">
+        <div class="why-icon">⚡</div>
+        <h3>Fast & Reliable</h3>
+        <p>
+          We respond quickly and complete jobs efficiently so your system is back
+          up and running without delays.
+        </p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">🧼</div>
+        <h3>Clean & Tidy</h3>
+        <p>
+          We respect your property and always leave the job site clean once the
+          work is completed.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+    
   <!-- LIGHTBOX MODAL -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-inner">
