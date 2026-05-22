@@ -69,9 +69,9 @@
       font-weight: bold;
     }
 
-    /* SECTIONS */
-    .section { padding: 50px; }
-
+  .section {
+  padding: 80px 20px;   /* ✅ clean vertical spacing */
+}
     /* ABOUT SPLIT */
     .about {
       display: flex;
@@ -180,9 +180,11 @@
 .services-section {
   background: #f8fbff;
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
+
+  margin-bottom: 40px;
 }
-``
+
     
     
     /* ===== SERVICES PHOTO + RIGHT PANEL SECTION ===== */
@@ -412,9 +414,13 @@
 .why-section {
   position: relative;
   background: url('https://images.unsplash.com/photo-1594671074285-3304745f8c13?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
-  padding: 90px 20px;
+
+  padding: 100px 20px;
   color: white;
+
+  margin: 80px 0;   /* ✅ consistent spacing */
 }
+
 
 /* DARK OVERLAY */
 .why-section::before {
@@ -525,10 +531,11 @@
     }
 .photo-hover-section {
   display: flex;
-  height: 650px;   /* ✅ taller = bigger photos */
+  height: 650px;
   overflow: hidden;
-}
 
+  margin: 80px 0;   /* ✅ PERFECT spacing top & bottom */
+}
 .photo-card {
   position: relative;
   flex: 1;
