@@ -114,17 +114,18 @@
   letter-spacing: 1px;      /* ✅ cleaner spacing */
 }
 
-  .services-grid {
+.services-grid {
   display: flex;
   justify-content: center;
   align-items: stretch;
   gap: 30px;
 
-  flex-wrap: wrap;
+  flex-wrap: nowrap;     /* ✅ FORCE SINGLE ROW */
 
-  max-width: 1000px;   /* ✅ tighter width = centered */
-  margin: 0 auto;      /* ✅ centers perfectly */
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
 
 .service-box {
   background: white;
@@ -443,7 +444,7 @@
     }
 .photo-hover-section {
   display: flex;
-  height: 500px;
+  height: 650px;   /* ✅ taller = bigger photos */
   overflow: hidden;
 }
 
