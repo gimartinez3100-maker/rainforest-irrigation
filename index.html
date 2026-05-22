@@ -408,23 +408,24 @@
       text-align: center;
       opacity: 0.9;
     }
-/* WHY CHOOSE US SECTION */
+/* WHY SECTION */
 .why-section {
-  background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
   position: relative;
+  background: url('https://images.unsplash.com/photo-1594671074285-3304745f8c13?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+  padding: 90px 20px;
   color: white;
-  padding: 80px 20px;
 }
 
-/* dark overlay */
+/* DARK OVERLAY */
 .why-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.65);
 }
 
-.why-container {
+/* CONTENT */
+.why-content {
   position: relative;
   z-index: 2;
   max-width: 1200px;
@@ -432,41 +433,52 @@
   text-align: center;
 }
 
+/* TITLE */
 .why-title {
-  font-size: 2.8rem;
-  margin-bottom: 50px;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* GOLD LINE */
+.why-divider {
+  width: 200px;
+  height: 2px;
+  background: #d4af37;
+  margin: 20px auto 50px auto;
 }
 
 /* GRID */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 50px;
 }
 
 /* BOX */
 .why-box {
-  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
-/* ICON */
+/* ICON (CLEAN WHITE STYLE) */
 .why-icon {
   font-size: 40px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  color: white;
 }
 
 /* TEXT */
 .why-box h3 {
   font-size: 22px;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .why-box p {
   font-size: 15px;
   line-height: 1.6;
-  max-width: 280px;
-  margin: 0 auto;
   opacity: 0.9;
 }
 
@@ -474,6 +486,7 @@
 @media (max-width: 900px) {
   .why-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 }
    
@@ -749,67 +762,62 @@
 
   </section>
 
-<!-- WHY CHOOSE US -->
+<!-- WHY CHOOSE US (PREMIUM) -->
 <section class="why-section">
 
-  <div class="why-container">
+  <div class="why-content">
 
     <h2 class="why-title">Why Choose Us</h2>
+    <div class="why-divider"></div>
 
     <div class="why-grid">
 
       <div class="why-box">
-        <div class="why-icon">🍃</div>
+        <div class="why-icon">❋</div>
         <h3>Eco Friendly</h3>
         <p>
-          All of our work is planned carefully to ensure efficient water usage
-          and a healthier landscape for your property.
+          Every project is planned to maximize efficiency and responsible water use.
         </p>
       </div>
 
       <div class="why-box">
-        <div class="why-icon">🤝</div>
-        <h3>Trusted & Honest</h3>
+        <div class="why-icon">✦</div>
+        <h3>Ethical</h3>
         <p>
-          We believe in transparency and clear communication, making sure you
-          understand every part of your project before we begin.
+          We build trust through honesty, transparency, and clear communication.
         </p>
       </div>
 
       <div class="why-box">
-        <div class="why-icon">🌿</div>
-        <h3>Detail‑Oriented</h3>
+        <div class="why-icon">✿</div>
+        <h3>Detail-Oriented</h3>
         <p>
-          We take pride in precise work, ensuring every system is installed or
-          repaired correctly for long-lasting results.
+          We focus on precision to ensure long-lasting system performance.
         </p>
       </div>
 
       <div class="why-box">
-        <div class="why-icon">📘</div>
+        <div class="why-icon">❖</div>
         <h3>Certified Experts</h3>
         <p>
-          Our team has the knowledge and experience to handle any irrigation
-          challenge with confidence and professionalism.
+          Skilled professionals delivering reliable irrigation solutions.
         </p>
       </div>
 
-      <!-- ✅ REPLACED "Safety First" -->
+      <!-- ✅ REPLACED SAFETY FIRST -->
       <div class="why-box">
         <div class="why-icon">⚡</div>
         <h3>Fast & Reliable</h3>
         <p>
-          We respond quickly and complete jobs efficiently so your system is back
-          up and running without delays.
+          Quick response times and dependable service you can count on.
         </p>
       </div>
 
       <div class="why-box">
-        <div class="why-icon">🧼</div>
+        <div class="why-icon">✚</div>
         <h3>Clean & Tidy</h3>
         <p>
-          We respect your property and always leave the job site clean once the
-          work is completed.
+          We respect your property and always leave the job site spotless.
         </p>
       </div>
 
