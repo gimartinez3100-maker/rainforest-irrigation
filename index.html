@@ -114,13 +114,16 @@
   letter-spacing: 1px;      /* ✅ cleaner spacing */
 }
 ``
-    .services-grid {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
+  .services-grid {
+  display: flex;
+  justify-content: center;      /* ✅ center everything */
+  align-items: stretch;
+  gap: 30px;
 
+  flex-wrap: wrap;              /* ✅ allows row layout */
+  max-width: 1200px;            /* ✅ keeps it centered */
+  margin: 0 auto;               /* ✅ centers section */
+}
     .service-box {
       background: white;
       padding: 30px;
