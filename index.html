@@ -8,6 +8,56 @@
   <style>
     body { margin: 0; font-family: Arial, sans-serif; }
 
+/* TOP HEADER */
+.top-header {
+  position: fixed;        /* ✅ sticks to top */
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+  z-index: 9999;          /* ✅ stays on top */
+}
+
+/* INNER CONTAINER */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 20px;
+}
+
+/* LOGO (LEFT) */
+.logo {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1b2a41;
+}
+
+/* BUTTON (RIGHT) */
+.header-btn {
+  background: #2e7d32;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-btn:hover {
+  background: #1b5e20;
+}
+body {
+  margin: 0;
+  padding-top: 70px;  /* ✅ prevents header overlap */
+}
+
     /* HERO VIDEO */
     .hero {
       position: relative;
@@ -684,6 +734,21 @@
     </div>
   </div>
 
+<!-- HEADER -->
+<header class="top-header">
+  <div class="header-container">
+
+    <div class="logo">
+      Rain Forest Irrigation LLC
+    </div>
+
+    <a href="#contact" class="header-btn">
+      Call Now
+    </a>
+
+  </div>
+</header>
+  
   <!-- ABOUT SECTION -->
   <div class="section about">
   <div class="about-left">
