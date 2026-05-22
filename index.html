@@ -6,109 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; }
-/* MOBILE FIXES */
-@media (max-width: 768px) {
+    /* ===== Base ===== */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding-top: 70px; /* room for fixed header */
+      background: #ffffff;
+      color: #1b2a41;
+    }
 
-  /* HERO FIX */
-  .hero {
-    height: 400px;
-  }
+    /* ===== Header (sticky) ===== */
+    .top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+      z-index: 9999;
+    }
 
-  .hero video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   /* ✅ removes side gap issue */
-  }
+    /* Full-width header so the logo can sit more left; safe padding so button never clips */
+    .header-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  .hero-text h1 {
-    font-size: 1.8rem;
-  }
+      padding-top: 14px;
+      padding-bottom: 14px;
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
 
-  .hero-text p {
-    font-size: 1rem;
-  }
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1b2a41;
+      white-space: nowrap;
+    }
 
-  /* SECTION SPACING (LESS CRAMPED) */
-  .section {
-    padding: 60px 15px;
-  }
+    .header-btn {
+      background: #2e7d32;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .header-btn:hover { background: #1b5e20; }
 
-  /* SERVICES FIX (THIS IS THE BIG ONE) */
-  .services-grid {
-    flex-direction: column;    /* ✅ stack properly */
-    align-items: center;
-    gap: 25px;
-  }
-
-  .service-box {
-    width: 92%;               /* ✅ fills screen nicely */
-    max-width: 420px;
-    padding: 25px;
-  }
-
-  .service-box h3 {
-    font-size: 20px;
-  }
-
-  .service-box p {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-}
-  
-/* TOP HEADER */
-.top-header {
-  position: fixed;        /* ✅ sticks to top */
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-
-  z-index: 9999;          /* ✅ stays on top */
-}
-
-/* INNER CONTAINER */
-.header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 15px 20px;
-}
-
-/* LOGO (LEFT) */
-.logo {
-  font-size: 18px;
-  font-weight: 800;
-  color: #1b2a41;
-}
-
-/* BUTTON (RIGHT) */
-.header-btn {
-  background: #2e7d32;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.header-btn:hover {
-  background: #1b5e20;
-}
-body {
-  margin: 0;
-  padding-top: 70px;  /* ✅ prevents header overlap */
-}
-
-    /* HERO VIDEO */
+    /* ===== Hero Video ===== */
     .hero {
       position: relative;
       height: 500px;
@@ -118,1020 +68,614 @@ body {
 
     .hero video {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
     }
 
-    /* Dark overlay so text is readable */
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.45);
-      z-index: 1;
     }
 
     .hero-text {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      text-shadow: 2px 2px 10px black;
-      z-index: 2;
+      color: #fff;
       padding: 0 16px;
-      width: min(900px, 92vw);
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.85);
     }
 
     .hero-text h1 {
-      font-size: 2.5rem;
       margin: 0 0 10px 0;
+      font-size: 2.7rem;
+      font-weight: 900;
     }
 
     .hero-text p {
-      margin: 0;
+      margin: 0 0 16px 0;
       font-size: 1.15rem;
+      font-weight: 600;
     }
 
     .btn {
       background: #2e7d32;
-      color: white;
+      color: #fff;
       padding: 12px 20px;
+      border-radius: 6px;
       text-decoration: none;
+      font-weight: 800;
       display: inline-block;
-      margin-top: 15px;
-      border-radius: 5px;
-      font-weight: bold;
+    }
+    .btn:hover { background: #1b5e20; }
+
+    /* ===== Global Section Spacing ===== */
+    .section {
+      padding: 80px 20px;
     }
 
-  .section {
-  padding: 80px 20px;   /* ✅ clean vertical spacing */
-}
-    /* ABOUT SPLIT */
+    /* ===== About Section ===== */
     .about {
+      background: #eef2f5;
+    }
+
+    .about-wrap {
       display: flex;
       flex-wrap: wrap;
+      gap: 30px;
       align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    
-.about {
-  background: #eef2f5;   /* ✅ slightly richer grey */
-}
 
+    .about-left {
+      flex: 1;
+      min-width: 320px;
+      max-width: 650px;
+    }
 
- /* ABOUT SECTION UPGRADE */
-.about-left {
-  max-width: 600px;
-}
+    .about-title {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin: 0 0 10px 0;
+      color: #111;
+    }
 
-/* MAIN TITLE */
-.about-title {
-  font-size: 2.8rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 15px;
-}
+    .about-title span { color: #2e7d32; }
 
-/* GREEN EMPHASIS */
-.about-title span {
-  color: #2e7d32;
-}
+    .about-accent {
+      color: #ff6a00;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin: 0 0 22px 0;
+    }
 
-/* SUBTITLE */
-.about-subtitle {
-  color: #ff6a00;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 25px;
-  font-size: 0.9rem;
-}
+    .about-left p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #333;
+      margin: 0 0 16px 0;
+    }
 
-/* PARAGRAPHS */
-.about-left p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #444;
-  margin-bottom: 18px;
-}
-
-/* LAST LINE (BOLD STATEMENT) */
-.about-highlight {
-  font-weight: 700;
-  color: #1b2a41;
-  margin-top: 20px;
-}
-.about-accent {
-  color: #ff6a00 !important;   /* ✅ FORCE ORANGE */
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
+    .about-highlight {
+      font-weight: 900;
+      color: #1b2a41;
+      margin-top: 18px;
+    }
 
     .about-right {
       flex: 1;
-      text-align: center;
-      min-width: 300px;
-      padding: 20px;
+      min-width: 320px;
+      display: flex;
+      justify-content: center;
     }
 
     .about-right img {
       width: 100%;
       max-width: 560px;
-      border-radius: 10px;
+      border-radius: 12px;
       object-fit: cover;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
-.about {
-  background: #f5f7fa;   /* light grey */
-}
-    
-    /* SERVICES UPDATED (BLUE) */
-
-.services-section {
-  background: linear-gradient(to right, #f2f7ff, #e8f0ff);
-  text-align: center;
-  padding: 80px 20px;
-}
-
-
-   .services-title {
-  font-size: 3rem;          /* ✅ BIGGER TITLE */
-  font-weight: 800;         /* ✅ bold like a real site */
-  margin-bottom: 50px;
-  color: #1b2a41;
-  letter-spacing: 1px;      /* ✅ cleaner spacing */
-}
-
-.services-grid {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 30px;
-
-  flex-wrap: nowrap;     /* ✅ FORCE SINGLE ROW */
-
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-
-.service-box {
-  background: white;
-  padding: 30px;
-  width: 300px;        /* ✅ FIX: force equal width */
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  transition: 0.3s;
-  text-align: center;
-}
-   .service-box {
-  border-top: 4px solid #2e7d32;   /* ✅ ties to your green branding */
-} 
-
-    .service-box:hover { transform: translateY(-5px); }
-
-   .icon {
-  width: 90px;                /* ✅ bigger circle */
-  height: 90px;
-  background: linear-gradient(135deg, #0077cc, #1e88e5); /* ✅ nicer gradient */
-  color: white;
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 40px;            /* ✅ bigger icon */
-  margin: 0 auto 20px auto;  /* ✅ centers icon nicely */
-
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* ✅ depth */
-}
-
-.service-box:hover .icon {
-  transform: scale(1.1);
-  transition: 0.3s;
-}
-
-.service-box {
-  text-align: center;
-}
-
-.service-box h3 {
-  margin-top: 10px;
-  font-size: 22px;
-}
-
-.service-box p {
-  font-size: 15px;
-  line-height: 1.6;
-  margin-top: 10px;
-  color: #555;
-}
-
-.services-section {
-  background: #f8fbff;
-  text-align: center;
-  padding: 80px 20px;
-
-  margin-bottom: 40px;
-}
-
-    
-    
-    /* ===== SERVICES PHOTO + RIGHT PANEL SECTION ===== */
-    .services-showcase {
-      padding: 0;
-      background: #0b3d2e;
+    /* ===== Services Section ===== */
+    .services-section {
+      background: linear-gradient(to right, #f2f7ff, #e8f0ff);
+      text-align: center;
     }
 
-    .showcase-wrap {
+    .services-title {
+      font-size: 3rem;
+      font-weight: 900;
+      margin: 0 0 50px 0;
+      color: #1b2a41;
+      letter-spacing: 1px;
+    }
+
+    .services-grid {
       display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 30px;
       flex-wrap: wrap;
-      min-height: 520px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* LEFT: PHOTO TILES */
-    .showcase-left {
-      flex: 1.2;
-      min-width: 320px;
-      padding: 40px;
-      background: rgba(0,0,0,0.15);
+    .service-box {
+      width: 340px;
+      background: #fff;
+      padding: 34px 28px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease;
+      text-align: center;
+      border-top: 4px solid #2e7d32;
     }
 
-    .tile-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 10px;
+    .service-box:hover { transform: translateY(-6px); }
+
+    .icon {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, #0077cc, #1e88e5);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin: 0 auto 18px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.25s ease;
     }
 
-    .tile {
-      position: relative;
+    .service-box:hover .icon { transform: scale(1.08); }
+
+    .service-box h3 {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+      color: #1b2a41;
+    }
+
+    .service-box p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #555;
+    }
+
+    /* ===== Photo Hover Section (kept as-is behavior) ===== */
+    .photo-hover-section {
+      display: flex;
+      height: 650px;
       overflow: hidden;
-      border-radius: 10px;
-      cursor: pointer;
-      min-height: 180px;
-      outline: none;
+      margin: 80px 0; /* spacing above & below */
     }
 
-    .tile.large { min-height: 420px; }
-    .tile.small { min-height: 205px; }
+    .photo-card {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+      transition: flex 0.5s ease;
+      cursor: pointer;
+    }
 
-    .tile img {
+    .photo-card.active { flex: 3; } /* default larger panel */
+    .photo-hover-section:hover .photo-card:not(:hover) { flex: 1; }
+    .photo-card:hover { flex: 3; }
+
+    .photo-card img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transform: scale(1);
-      transition: transform 0.35s ease;
+      object-fit: contain;  /* you mentioned landscape photos later; this keeps current ones visible */
+      background: #000;
+      display: block;
     }
 
-    .tile:hover img,
-    .tile:focus img {
-      transform: scale(1.08);
-    }
-
-    .tile::after {
+    .photo-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.10));
+      background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2));
     }
 
-    .tile-content {
+    .photo-overlay {
       position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.3s;
       z-index: 2;
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     }
 
-    .tile-content h3 {
-      margin: 0 0 6px 0;
-      font-size: 1.35rem;
-      letter-spacing: 0.5px;
+    /* ONLY hovered card shows text (your current desired behavior) */
+    .photo-card:hover .photo-overlay {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .tile-content .sub {
-      margin: 0 0 10px 0;
-      font-size: 0.95rem;
-      color: #bfe3ff;
-      font-weight: bold;
+    .photo-overlay h2 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 900;
+      text-shadow: 3px 3px 8px rgba(0,0,0,0.9);
     }
 
-    .tile-content p {
-      margin: 0 0 14px 0;
-      font-size: 0.95rem;
-      line-height: 1.35;
+    .photo-overlay h4 {
+      margin: 6px 0;
+      color: #ffd54f;
+      font-weight: 900;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.85);
     }
 
-    .tile-btn {
-      display: inline-block;
-      background: #1e88e5;
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      text-decoration: none;
-      font-weight: bold;
+    .photo-overlay p {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.85);
     }
 
-    .tile-btn:hover { background: #1565c0; }
-
-    /* RIGHT: TEXT PANEL */
-    .showcase-right {
-      flex: 1;
-      min-width: 320px;
-      padding: 60px 50px;
-      color: white;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(0,119,204,0.35), transparent 45%),
-        radial-gradient(circle at 80% 60%, rgba(46,125,50,0.25), transparent 50%),
-        linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-        url('https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?auto=format&fit=crop&w=1400&q=80');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .showcase-right h2 {
-      margin-top: 0;
-      font-size: 2.1rem;
-      line-height: 1.1;
-    }
-
-    .showcase-right .tagline {
-      color: #8fd3ff;
-      font-weight: 800;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      margin: 10px 0 18px 0;
-    }
-
-    .showcase-right p {
-      max-width: 560px;
-      line-height: 1.55;
-      margin: 0 0 16px 0;
-    }
-
-    .checklist {
-      list-style: none;
-      padding: 0;
-      margin: 22px 0 26px 0;
-    }
-
-    .checklist li {
-      margin: 12px 0;
-      padding-left: 34px;
+    /* ===== Why Choose Us Section ===== */
+    .why-section {
       position: relative;
+      background: url('https://images.unsplash.com/photo-1594671074285-3304745f8c13?q=80&w=1170&auto=format&fit=crop') center/cover no-repeat;
+      padding: 100px 20px;
+      margin: 80px 0;
+      color: #fff;
+    }
+
+    .why-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+    }
+
+    .why-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .why-title {
+      font-size: 3rem;
+      font-weight: 600;
+      margin: 0 0 10px 0;
+      letter-spacing: 1px;
+    }
+
+    .why-divider {
+      width: 200px;
+      height: 2px;
+      background: #d4af37;
+      margin: 20px auto 50px auto;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+    }
+
+    .why-box {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .why-icon {
+      font-size: 40px;
+      margin-bottom: 18px;
+      color: #fff;
+    }
+
+    .why-box h3 {
+      font-size: 22px;
+      margin: 0 0 10px 0;
       font-weight: 600;
     }
 
-    .checklist li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: rgba(30,136,229,0.95);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
+    .why-box p {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.92;
+      margin: 0;
     }
 
-    .cta-yellow {
-      display: inline-block;
-      background: #1e88e5;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .cta-yellow:hover { background: #1565c0; }
-
-    /* LIGHTBOX (click-to-zoom) */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .lightbox.open { display: flex; }
-
-    .lightbox-inner {
-      position: relative;
-      max-width: 1000px;
-      width: 95%;
-      max-height: 85vh;
-    }
-
-    .lightbox-inner img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      max-height: 85vh;
-      object-fit: contain;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -45px;
-      right: 0;
-      color: #fff;
-      font-size: 34px;
-      font-weight: bold;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .lightbox-caption {
-      color: #fff;
-      margin-top: 10px;
+    /* ===== Reviews Section ===== */
+    .reviews-section {
+      background: #eef4ff;
       text-align: center;
-      opacity: 0.9;
+      padding: 80px 20px;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
     }
-/* WHY SECTION */
-.why-section {
-  position: relative;
-  background: url('https://images.unsplash.com/photo-1594671074285-3304745f8c13?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
 
-  padding: 100px 20px;
-  color: white;
-
-  margin: 80px 0;   /* ✅ consistent spacing */
-}
-
-
-/* DARK OVERLAY */
-.why-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-}
-
-/* CONTENT */
-.why-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* TITLE */
-.why-title {
-  font-size: 3rem;
-  font-weight: 500;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
-
-/* GOLD LINE */
-.why-divider {
-  width: 200px;
-  height: 2px;
-  background: #d4af37;
-  margin: 20px auto 50px auto;
-}
-
-/* GRID */
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
-}
-
-/* BOX */
-.why-box {
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-/* ICON (CLEAN WHITE STYLE) */
-.why-icon {
-  font-size: 40px;
-  margin-bottom: 20px;
-  color: white;
-}
-
-/* TEXT */
-.why-box h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.why-box p {
-  font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-  .why-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-}
-   
-    /* REVIEWS SECTION (Elfsight container styling) */
-  .reviews-section {
-  background: #ffffff;     /* ✅ clean white */
-  text-align: center;
-  padding: 80px 20px;
-
-  border-top: 1px solid #e0e0e0;   /* ✅ subtle divider */
-  border-bottom: 1px solid #e0e0e0;
-}
-``
-    }
     .reviews-section h2 {
       font-size: 2.2rem;
-      margin: 0 0 40px 0;
-      color: #333;
+      margin: 0 0 10px 0;
+      color: #1b2a41;
     }
+
+    .reviews-section p {
+      margin: 0 0 40px 0;
+      color: #666;
+    }
+
     .elfsight-wrap {
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* FOOTER */
-    footer {
+    /* ===== Contact Section ===== */
+    #contact {
       background: #1b5e20;
-      color: white;
+      color: #fff;
       text-align: center;
-      padding: 20px;
+      padding: 80px 20px;
     }
 
-    /* Mobile spacing */
-    @media (max-width: 900px) {
-      .showcase-right { padding: 40px 24px; }
-      .showcase-left { padding: 30px 18px; }
-      .tile.large { min-height: 320px; }
-      .hero { height: 420px; }
-      .hero-text h1 { font-size: 2.0rem; }
-      .hero-text p { font-size: 1.05rem; }
+    #contact h2 { margin: 0 0 16px 0; }
+    #contact p { margin: 0 0 10px 0; }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #0f3a13;
+      color: #fff;
+      text-align: center;
+      padding: 18px 20px;
     }
-.photo-hover-section {
-  display: flex;
-  height: 650px;
-  overflow: hidden;
 
-  margin: 80px 0;   /* ✅ PERFECT spacing top & bottom */
-}
-.photo-card {
-  position: relative;
-  flex: 1;
-  overflow: hidden;
-  transition: flex 0.5s ease;
-  cursor: pointer;
-}
+    /* ===== Mobile Fixes ===== */
+    @media (max-width: 768px) {
+      body { padding-top: 70px; }
 
-.photo-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;   /* ✅ shows full image */
-  background: black;     /* ✅ fills empty space cleanly */
-}
+      .hero { height: 400px; }
+      .hero-text h1 { font-size: 1.8rem; }
+      .hero-text p { font-size: 1rem; }
 
+      .section { padding: 60px 15px; }
 
-/* default big image */
-.photo-card.active {
-  flex: 3;
-}
+      .services-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+      }
 
-/* hover expand */
-.photo-card:hover {
-  flex: 3;
-}
+      .service-box {
+        width: 92%;
+        max-width: 420px;
+        padding: 25px;
+      }
 
-.photo-hover-section:hover .photo-card:not(:hover) {
-  flex: 1;
-}
+      .photo-hover-section {
+        height: auto;
+        flex-direction: column;
+        margin: 60px 0;
+      }
 
-/* dark overlay */
+      .photo-card,
+      .photo-card.active,
+      .photo-card:hover {
+        flex: none;
+      }
 
-.photo-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.75),
-    rgba(0,0,0,0.2)
-  );
-}
+      .photo-card img {
+        height: 420px;
+      }
 
-/* text overlay hidden */
-.photo-overlay {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  right: 30px;
-  color: white;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.3s;
-}
-
-/* show text on hover */
-.photo-card:hover .photo-overlay {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.photo-overlay h2 {
-  margin: 0;
-  font-size: 2rem;
-}
-
-.photo-overlay h4 {
-  color: #ffd54f;
-  margin: 5px 0;
-}
-
-.photo-overlay p {
-  font-size: 0.95rem;
-}    
-.photo-overlay {
-  z-index: 2;
-}
-
-.photo-overlay h2 {
-  font-weight: 800;
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.9);
-}
-
-.photo-overlay h4 {
-  font-weight: bold;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
-}
-
-.photo-overlay p {
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
-}
-
-@media (max-width: 768px) {
-
-  .services-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 25px;
-  }
-
-  .service-box {
-    width: 90% !important;
-    max-width: 420px;
-    padding: 25px;
-  }
-
-}
-    
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO VIDEO (YOUR MP4) -->
+  <!-- Sticky Header -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="logo">Rain Forest Irrigation LLC</div>
+      <a href="#contact" class="header-btn">Call Now</a>
+    </div>
+  </header>
+
+  <!-- Hero Video -->
   <div class="hero">
     <video autoplay muted loop playsinline>
       <source src="7318623-hd_1920_1080_30fps.mp4" type="video/mp4" />
     </video>
 
     <div class="hero-text">
-<h1>Brownsville’s Favorite Irrigation Company</h1>
-<p>Veteran-Owned • Family Operated</p>
-<a href="#contact" class="btn">Call Now</a>
-
+      <h1>Brownsville’s Favorite Irrigation Company</h1>
+      <p>Veteran-Owned • Family Operated</p>
+      <a href="#contact" class="btn">Call Now</a>
     </div>
   </div>
 
-<!-- HEADER -->
-<header class="top-header">
-  <div class="header-container">
+  <!-- About -->
+  <section class="section about">
+    <div class="about-wrap">
+      <div class="about-left">
+        <h2 class="about-title">Veteran Owned <span>Sprinkler Services</span> in Brownsville</h2>
+        <p class="about-accent">LICENSED &amp; OPERATED SINCE 2007</p>
 
-    <div class="logo">
-      Rain Forest Irrigation LLC
+        <p>
+          Rain Forest Irrigation LLC is a veteran-owned and operated business based in Brownsville, Texas.
+          We specialize in providing high-quality irrigation solutions tailored to your property’s unique needs.
+        </p>
+
+        <p>
+          Our team comes fully prepared to handle everything — from fixing leaks and replacing broken sprinkler heads
+          to designing and installing complete irrigation systems.
+        </p>
+
+        <p>
+          With years of hands-on experience and a strong reputation in the RGV, we are committed to delivering reliable
+          workmanship and long-lasting results.
+        </p>
+
+        <p class="about-highlight">High Quality Work. Reliable Service. Results You Can Trust.</p>
+      </div>
+
+      <div class="about-right">
+        https://lh3.googleusercontent.com/p/AF1QipMzUXOfPD2EA62PSjCYQGnSBSwJD3POqcKi7HcL=w800-h600-k-no
+      </div>
     </div>
-
-    <a href="#contact" class="header-btn">
-      Call Now
-    </a>
-
-  </div>
-</header>
-  
-  <!-- ABOUT SECTION -->
-  <div class="section about">
-  <div class="about-left">
-
-  <h2 class="about-title">
-    Veteran Owned <span>Sprinkler Services</span> in Brownsville
-  </h2>
-    
-<p class="about-accent">
-  LICENSED & OPERATED SINCE 2007
-</p>
-
-  <p>
-    Rain Forest Irrigation LLC is a veteran-owned and operated business 
-    based in Brownsville, Texas. We specialize in providing high-quality 
-    irrigation solutions tailored to your property's unique needs.
-  </p>
-
-  <p>
-    Our team comes fully prepared to handle everything — from fixing leaks 
-    and replacing broken sprinkler heads to designing and installing 
-    complete irrigation systems.
-  </p>
-
-  <p>
-    With years of hands-on experience and a strong reputation in the RGV, 
-    we are committed to delivering reliable workmanship and long-lasting results.
-  </p>
-
-  <p class="about-highlight">
-    High Quality Work. Reliable Service. Results You Can Trust.
-  </p>
-
-</div>
-
-    <!-- YOUR NEW IMAGE -->
-    <div class="about-right">
-      <img src="https://lh3.googleusercontent.com/p/AF1QipMzUXOfPD2EA62PSjCYQGnSBSwJD3POqcKi7HcL=w800-h600-k-no" alt="Rain Forest Irrigation LLC - Owner" />
-    </div>
-  </div>
-
-  <!-- SERVICES UPDATED -->
-  <div class="section services-section">
-    <h2 class="services-title">Our Services</h2>
-
-   <div class="services-grid">
-
-  <!-- SPRINKLER REPAIR -->
-  <div class="service-box">
-    <div class="icon">🔧</div>
-    <h3>Sprinkler Repair</h3>
-
-    <p>
-      We provide reliable, high-quality sprinkler repairs designed to maximize system efficiency. 
-      From fixing leaky valves to replacing broken heads, our skilled technicians restore full 
-      performance to ensure your landscape remains lush and healthy.
-    </p>
-  </div>
-
-  <!-- INSTALLATION -->
-  <div class="service-box">
-    <div class="icon">💧</div>
-    <h3>Sprinkler Installation</h3>
-
-    <p>
-      Our custom irrigation systems are designed to provide optimal water coverage and efficiency. 
-      We install high-quality components tailored to your landscape to ensure long-term durability 
-      and performance.
-    </p>
-  </div>
-
-  <!-- MAINTENANCE -->
-  <div class="service-box">
-    <div class="icon">🧰</div>
-    <h3>Sprinkler Maintenance</h3>
-
-    <p>
-      Keep your system running at peak performance with routine inspections and adjustments. 
-      We identify issues early, optimize water usage, and ensure your lawn stays green year-round.
-    </p>
-  </div>
-
-</div>
-
-<!-- INTERACTIVE PHOTO SECTION -->
-<section class="photo-hover-section">
-
-  <!-- BIG IMAGE (Sprinkler Repair) -->
-  <div class="photo-card active">
-    <img src="https://lh3.googleusercontent.com/p/AF1QipNHElX9r2vNwQRm1yX0C0Qmi6l7hJzzr6R5qNdY=w900-h600-k-no">
-
-    <div class="photo-overlay">
-      <h2>SPRINKLER REPAIR</h2>
-      <h4>Efficient Sprinkler Repair Services</h4>
-      <p>
-        Ensure your lawn stays hydrated with fast and reliable repair services.
-      </p>
-    </div>
-  </div>
-
-  <!-- IMAGE 2 (Custom Design) -->
-  <div class="photo-card">
-    <img src="https://lh3.googleusercontent.com/p/AF1QipNd2ogVnls4FEtk14OvsF28gxEEydgr9w2MMw-1=w900-h600-k-no">
-
-    <div class="photo-overlay">
-      <h2>INSTALLATION</h2>
-      <h4>Custom System Design</h4>
-      <p>
-        Professional irrigation systems built specifically for your property.
-      </p>
-    </div>
-  </div>
-
-  <!-- IMAGE 3 (Maintenance / Keep Systems Running) -->
-  <div class="photo-card">
-    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJNz8byRPtnyeSUZ_OHwu7UbzJ559Ulg_ZDRe71ob0zxopxAXQL0txJy8Q5o1PZ2pqunZUhPAkyNUPt-xcC28Ld2wOpyx2AZ9Y92lNDE7MEvgl9ePmRLZSSE70YI--qsbQiM-iOSwZXHuz=w900-h600-k-no">
-
-    <div class="photo-overlay">
-      <h2>MAINTENANCE</h2>
-      <h4>Keep Systems Running</h4>
-      <p>
-        Seasonal checks and system adjustments to keep everything working perfectly.
-      </p>
-    </div>
-  </div>
-
-</section>
-
   </section>
 
-<!-- WHY CHOOSE US (PREMIUM) -->
-<section class="why-section">
+  <!-- Services -->
+  <section class="section services-section">
+    <h2 class="services-title">Our Services</h2>
 
-  <div class="why-content">
-
-    <h2 class="why-title">Why Choose Us</h2>
-    <div class="why-divider"></div>
-
-    <div class="why-grid">
-
-      <div class="why-box">
-        <div class="why-icon">❋</div>
-        <h3>Eco Friendly</h3>
+    <div class="services-grid">
+      <div class="service-box">
+        <div class="icon">🔧</div>
+        <h3>Sprinkler Repair</h3>
         <p>
-          Every project is planned to maximize efficiency and responsible water use.
+          We provide reliable, high-quality sprinkler repairs designed to maximize system efficiency.
+          From fixing leaky valves to replacing broken heads, our skilled technicians restore full performance
+          to ensure your landscape remains lush and healthy.
         </p>
       </div>
 
-      <div class="why-box">
-        <div class="why-icon">✦</div>
-        <h3>Ethical</h3>
+      <div class="service-box">
+        <div class="icon">💧</div>
+        <h3>Sprinkler Installation</h3>
         <p>
-          We build trust through honesty, transparency, and clear communication.
+          Our custom irrigation systems are designed to provide optimal water coverage and efficiency.
+          We install high-quality components tailored to your landscape to support long-term durability and performance.
         </p>
       </div>
 
-      <div class="why-box">
-        <div class="why-icon">✿</div>
-        <h3>Detail-Oriented</h3>
+      <div class="service-box">
+        <div class="icon">🧰</div>
+        <h3>Sprinkler Maintenance</h3>
         <p>
-          We focus on precision to ensure long-lasting system performance.
+          Keep your system running at peak performance with routine inspections and adjustments.
+          We identify issues early, optimize water usage, and help your lawn stay green year-round.
         </p>
       </div>
+    </div>
+  </section>
 
-      <div class="why-box">
-        <div class="why-icon">❖</div>
-        <h3>Certified Experts</h3>
-        <p>
-          Skilled professionals delivering reliable irrigation solutions.
-        </p>
+  <!-- Photo Hover Section (your current photos kept) -->
+  <section class="photo-hover-section">
+    <div class="photo-card active">
+      https://lh3.googleusercontent.com/p/AF1QipNHElX9r2vNwQRm1yX0C0Qmi6l7hJzzr6R5qNdY=w900-h600-k-no
+      <div class="photo-overlay">
+        <h2>SPRINKLER REPAIR</h2>
+        <h4>Efficient Sprinkler Repair Services</h4>
+        <p>Ensure your lawn stays hydrated with fast and reliable repair services.</p>
       </div>
-
-      <!-- ✅ REPLACED SAFETY FIRST -->
-      <div class="why-box">
-        <div class="why-icon">⚡</div>
-        <h3>Fast & Reliable</h3>
-        <p>
-          Quick response times and dependable service you can count on.
-        </p>
-      </div>
-
-      <div class="why-box">
-        <div class="why-icon">✚</div>
-        <h3>Clean & Tidy</h3>
-        <p>
-          We respect your property and always leave the job site spotless.
-        </p>
-      </div>
-
     </div>
 
-  </div>
-
-</section>
-    
-  <!-- LIGHTBOX MODAL -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-inner">
-      <div class="lightbox-close" id="lightboxClose" aria-label="Close">×</div>
-      <img id="lightboxImg" alt="Expanded service photo">
-      <div class="lightbox-caption" id="lightboxCaption"></div>
+    <div class="photo-card">
+      https://lh3.googleusercontent.com/p/AF1QipNd2ogVnls4FEtk14OvsF28gxEEydgr9w2MMw-1=w900-h600-k-no
+      <div class="photo-overlay">
+        <h2>INSTALLATION</h2>
+        <h4>Custom System Design</h4>
+        <p>Professional irrigation systems built specifically for your property.</p>
+      </div>
     </div>
-  </div>
 
-  <!-- LIVE GOOGLE REVIEWS (ELFSIGHT) -->
-  <div class="reviews-section">
-<h2 style="font-size:2.2rem; margin-bottom:10px;">
-  Google Reviewed & Trusted
-</h2>
+    <div class="photo-card">
+      https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJNz8byRPtnyeSUZ_OHwu7UbzJ559Ulg_ZDRe71ob0zxopxAXQL0txJy8Q5o1PZ2pqunZUhPAkyNUPt-xcC28Ld2wOpyx2AZ9Y92lNDE7MEvgl9ePmRLZSSE70YI--qsbQiM-iOSwZXHuz=w900-h600-k-no
+      <div class="photo-overlay">
+        <h2>MAINTENANCE</h2>
+        <h4>Keep Systems Running</h4>
+        <p>Seasonal checks and adjustments to keep everything working perfectly.</p>
+      </div>
+    </div>
+  </section>
 
-<p style="margin-bottom:40px; color:#666;">
-  See what our clients are saying
-</p>
+  <!-- Why Choose Us -->
+  <section class="why-section">
+    <div class="why-content">
+      <h2 class="why-title">Why Choose Us</h2>
+      <div class="why-divider"></div>
+
+      <div class="why-grid">
+        <div class="why-box">
+          <div class="why-icon">❋</div>
+          <h3>Eco Friendly</h3>
+          <p>Every project is planned to maximize efficiency and responsible water use.</p>
+        </div>
+
+        <div class="why-box">
+          <div class="why-icon">✦</div>
+          <h3>Ethical</h3>
+          <p>We build trust through honesty, transparency, and clear communication.</p>
+        </div>
+
+        <div class="why-box">
+          <div class="why-icon">✿</div>
+          <h3>Detail‑Oriented</h3>
+          <p>We focus on precision to ensure long‑lasting system performance.</p>
+        </div>
+
+        <div class="why-box">
+          <div class="why-icon">❖</div>
+          <h3>Certified Experts</h3>
+          <p>Skilled professionals delivering reliable irrigation solutions.</p>
+        </div>
+
+        <div class="why-box">
+          <div class="why-icon">⚡</div>
+          <h3>Fast &amp; Reliable</h3>
+          <p>Quick response times and dependable service you can count on.</p>
+        </div>
+
+        <div class="why-box">
+          <div class="why-icon">✚</div>
+          <h3>Clean &amp; Tidy</h3>
+          <p>We respect your property and always leave the job site spotless.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews-section">
+    <h2>Google Reviewed &amp; Trusted</h2>
+    <p>See what our clients are saying</p>
+
     <div class="elfsight-wrap">
       <div class="elfsight-app-7303d924-e97c-4c9c-a946-c2bffc65dd6e" data-elfsight-app-lazy></div>
     </div>
-  </div>
+  </section>
 
-  <!-- CONTACT -->
-  <div class="section" id="contact">
+  <!-- Contact -->
+  <section id="contact">
     <h2>Contact Us</h2>
     <p><strong>Call Now:</strong> (956) XXX-XXXX</p>
     <p>Serving Brownsville &amp; The Rio Grande Valley</p>
-  </div>
+  </section>
 
   <footer>
     <p>© 2026 Rain Forest Irrigation LLC</p>
   </footer>
 
-  <!-- Elfsight Google Reviews (script ONCE, near bottom) -->
+  <!-- Elfsight script (only once) -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
-
-  <script>
-    // Lightbox (click-to-zoom)
-    const tiles = document.querySelectorAll('.tile');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const lightboxClose = document.getElementById('lightboxClose');
-
-    function openLightbox(src, caption) {
-      lightboxImg.src = src;
-      lightboxCaption.textContent = caption || '';
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      lightboxImg.src = '';
-      lightboxCaption.textContent = '';
-    }
-
-    tiles.forEach(tile => {
-      tile.addEventListener('click', () => {
-        const src = tile.getAttribute('data-full');
-        const caption = tile.getAttribute('data-caption');
-        if (src) openLightbox(src, caption);
-      });
-
-      tile.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const src = tile.getAttribute('data-full');
-          const caption = tile.getAttribute('data-caption');
-          if (src) openLightbox(src, caption);
-        }
-      });
-    });
-
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('open')) {
-        closeLightbox();
-      }
-      #contact {
-  background: #1b5e20;
-  color: white;
-  text-align: center;
-  padding: 80px 20px;
-}
-    });
-  </script>
 
 </body>
 </html>
