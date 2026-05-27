@@ -291,6 +291,67 @@ SERVICES
   line-height:1.7;
 }
 
+/* =========================
+SERVICES: TOP GREEN BAR + ANIMATED GRADIENT EDGE
+========================= */
+
+/* Keep your original service-box styling, but ADD/ENSURE these: */
+.service-box{
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+  background:#fff;                 /* inside stays white */
+  border-top:5px solid #2e7d32;    /* ✅ brings back the green top bar */
+}
+
+/* Animated gradient border around ALL edges */
+.service-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  padding:3px;                      /* thickness of the animated border ring */
+
+  background: linear-gradient(
+    120deg,
+    #2e7d32,
+    #1e88e5,
+    #2e7d32,
+    #1e88e5
+  );
+  background-size: 400% 400%;
+  animation: borderShift 7s linear infinite;
+
+  /* Mask so only the edges show (ring), not the inside */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Keep all text/icons ABOVE the border ring */
+.service-box > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Optional: slightly stronger effect on hover */
+.service-box:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.18);
+}
+
+/* Smooth animated movement around edges */
+@keyframes borderShift{
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+  
 .service-box{
   position:relative;
   overflow:hidden;
