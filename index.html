@@ -254,7 +254,6 @@ SERVICES
   border-radius:14px;
   box-shadow:0 8px 30px rgba(0,0,0,0.08);
   transition:0.3s;
-  border-top:5px solid #2e7d32;
 }
 
 .service-box:hover{
@@ -356,6 +355,50 @@ SERVICES
   50%  { background-position:100% 50%; }
   100% { background-position:0% 50%; }
 }
+
+/* =========================
+SERVICES: WHITE INSIDE + VIBRANT GRADIENT EDGES
+========================= */
+
+.service-box{
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;         /* match your current rounding */
+  background:#fff;            /* keep inside white */
+}
+
+/* Gradient border ring (only edges) */
+.service-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  padding:3px; /* border thickness */
+  background:linear-gradient(120deg,#2e7d32,#1e88e5,#2e7d32);
+  opacity:1; /* keep always visible */
+
+  /* mask so only the border shows, not the center */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Keep all content above the border */
+.service-box > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Optional: slight glow on hover (still white inside) */
+.service-box:hover::before{
+  filter:drop-shadow(0 0 12px rgba(30,136,229,0.35));
+}
+  
   
 /* =========================
 PHOTO SHOWCASE (FIXED LAYERS + BETTER HOVER)
@@ -793,10 +836,10 @@ MOBILE
 
         <div class="icon">🔧</div>
 
-        <h3>Sprinkler Repair</h3>
+        <h3>Design</h3>
 
         <p>
-          Fast and reliable sprinkler repairs including broken heads, leaks, valve issues, coverage problems, and system diagnostics.
+         Custom-made sprinkler system designs tailored to your property for optimal coverage, efficiency, and long-term performance.
         </p>
 
       </div>
@@ -805,7 +848,7 @@ MOBILE
 
         <div class="icon">💧</div>
 
-        <h3>System Installation</h3>
+        <h3>Installations</h3>
 
         <p>
           Custom irrigation systems designed for maximum efficiency, proper water coverage, and long-term durability.
@@ -817,10 +860,10 @@ MOBILE
 
         <div class="icon">🧰</div>
 
-        <h3>Routine Maintenance</h3>
+        <h3>Repairs</h3>
 
         <p>
-          Keep your irrigation system operating at peak performance with inspections, adjustments, and seasonal servicing.
+          Fast, reliable sprinkler repairs for broken heads, leaks, valve issues, coverage problems, and full system diagnostics to keep your system running efficiently.
         </p>
 
       </div>
