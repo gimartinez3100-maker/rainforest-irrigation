@@ -3,11 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Rain Forest Irrigation LLC</title>
+
+<title>Sprinkler Repair & Irrigation Services in Brownsville TX | Rain Forest Irrigation</title>
+
+<meta name="description"
+content="Veteran-owned sprinkler repair and irrigation installation company serving Brownsville and the Rio Grande Valley.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-/* ================= RESET ================= */
 
 *{
   margin:0;
@@ -15,61 +22,78 @@
   box-sizing:border-box;
 }
 
-body{
-  font-family:Arial, sans-serif;
-  background:#fff;
-  padding-top:80px;
-  color:#111;
+html{
+  scroll-behavior:smooth;
 }
 
-/* ================= HEADER ================= */
+body{
+  font-family:'Montserrat',sans-serif;
+  color:#222;
+  background:#fff;
+  padding-top:80px;
+  overflow-x:hidden;
+}
+
+/* =========================
+HEADER
+========================= */
 
 .top-header{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
-  background:#fff;
-  box-shadow:0 2px 12px rgba(0,0,0,0.08);
+  background:white;
   z-index:9999;
+  box-shadow:0 2px 12px rgba(0,0,0,0.08);
 }
 
 .header-container{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 20px;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:16px 18px;
 }
 
 .logo{
+  font-size:20px;
   font-weight:800;
-  font-size:18px;
   color:#1b2a41;
-  margin-left:10px;
 }
 
 .header-btn{
   background:#2e7d32;
-  color:#fff;
-  padding:10px 16px;
+  color:white;
+  padding:12px 18px;
   border-radius:6px;
-  font-weight:700;
   text-decoration:none;
-  margin-right:10px;
+  font-weight:700;
+  transition:0.3s;
 }
 
-/* ================= HERO ================= */
+.header-btn:hover{
+  background:#1b5e20;
+}
+
+/* =========================
+HERO
+========================= */
 
 .hero{
   position:relative;
-  height:90vh;
+  height:92vh;
   overflow:hidden;
+  background:black;
 }
 
 .hero video{
+  position:absolute;
   width:100%;
   height:100%;
   object-fit:cover;
-  position:absolute;
 }
 
 .hero::after{
@@ -79,40 +103,57 @@ body{
   background:rgba(0,0,0,0.55);
 }
 
-.hero-text{
+.hero-content{
   position:relative;
   z-index:2;
   height:100%;
+
   display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
+
   text-align:center;
-  color:#fff;
   padding:20px;
 }
 
+.hero-text{
+  max-width:900px;
+  color:white;
+}
+
 .hero-text h1{
-  font-size:3rem;
+  font-size:4rem;
   font-weight:800;
-  margin-bottom:10px;
+  line-height:1.1;
+  margin-bottom:20px;
+  text-shadow:0 5px 20px rgba(0,0,0,0.4);
 }
 
 .hero-text p{
-  font-size:1.1rem;
+  font-size:1.2rem;
+  margin-bottom:30px;
+  opacity:0.95;
 }
 
 .btn{
-  margin-top:20px;
+  display:inline-block;
   background:#2e7d32;
-  color:#fff;
-  padding:12px 22px;
+  color:white;
+  padding:15px 28px;
   border-radius:6px;
   text-decoration:none;
   font-weight:700;
+  transition:0.3s;
 }
 
-/* ================= SECTIONS ================= */
+.btn:hover{
+  background:#1b5e20;
+  transform:translateY(-2px);
+}
+
+/* =========================
+GENERAL SECTION
+========================= */
 
 .section{
   padding:100px 20px;
@@ -123,7 +164,9 @@ body{
   margin:auto;
 }
 
-/* ================= ABOUT ================= */
+/* =========================
+ABOUT
+========================= */
 
 .about{
   background:#f5f7fa;
@@ -131,222 +174,393 @@ body{
 
 .about-wrap{
   display:flex;
+  align-items:center;
+  gap:60px;
   flex-wrap:wrap;
-  gap:40px;
 }
 
-.about-left, .about-right{
+.about-left{
   flex:1;
-  min-width:300px;
+  min-width:320px;
+}
+
+.about-right{
+  flex:1;
+  min-width:320px;
 }
 
 .about-right img{
   width:100%;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.15);
-}
-
-.about-title{
-  font-size:2.6rem;
-  font-weight:800;
-  color:#111;
-  margin-bottom:10px;
+  border-radius:14px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.12);
 }
 
 .about-accent{
+  color:#ff6a00;
   font-weight:700;
-  color:#111;
   letter-spacing:2px;
-  margin-bottom:15px;
+  margin-bottom:18px;
+  font-size:0.9rem;
 }
 
-/* ================= SERVICES ================= */
+.about-title{
+  font-size:3rem;
+  font-weight:800;
+  line-height:1.15;
+  margin-bottom:24px;
+  color:#1b2a41;
+}
+
+.about-title span{
+  color:#2e7d32;
+}
+
+.about-left p{
+  margin-bottom:18px;
+  line-height:1.8;
+  color:#555;
+}
+
+.about-highlight{
+  font-weight:700;
+  color:#1b2a41 !important;
+}
+
+/* =========================
+SERVICES
+========================= */
+
+.services-section{
+  background:#fff;
+  text-align:center;
+}
 
 .services-title{
-  text-align:center;
-  font-size:2.6rem;
+  font-size:3rem;
   font-weight:800;
-  margin-bottom:50px;
+  color:#1b2a41;
+  margin-bottom:60px;
 }
 
 .services-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:25px;
+  gap:30px;
 }
-
-/* SERVICE CARD */
 
 .service-box{
-  position:relative;
-  background:#fff;
-  padding:30px;
+  background:white;
+  padding:40px 30px;
   border-radius:14px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
-  transition:0.4s ease;
-
-  opacity:0;
-  transform:translateY(40px);
-  overflow:hidden;
-}
-
-.service-box.show{
-  opacity:1;
-  transform:translateY(0);
+  box-shadow:0 8px 30px rgba(0,0,0,0.08);
+  transition:0.3s;
+  border-top:5px solid #2e7d32;
 }
 
 .service-box:hover{
-  transform:translateY(-10px) scale(1.03);
-  box-shadow:0 18px 45px rgba(0,0,0,0.18);
+  transform:translateY(-8px);
 }
-
-/* glow border */
-.service-box::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:14px;
-  padding:2px;
-  background:linear-gradient(120deg,#2e7d32,#1e88e5);
-  opacity:0;
-  transition:0.4s;
-
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-}
-
-.service-box:hover::before{
-  opacity:1;
-}
-
-/* ICON (SVG) */
 
 .icon{
-  width:72px;
-  height:72px;
-  margin:0 auto 18px;
+  width:90px;
+  height:90px;
+  margin:auto;
+  margin-bottom:24px;
+
   border-radius:50%;
-  background:rgba(0,0,0,0.04);
 
   display:flex;
   align-items:center;
   justify-content:center;
+
+  font-size:40px;
+
+  background:linear-gradient(135deg,#0077cc,#1e88e5);
+
+  color:white;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-.icon svg{
-  width:30px;
-  height:30px;
-  stroke:#111;
-  stroke-width:2;
+.service-box h3{
+  margin-bottom:14px;
+  font-size:1.4rem;
 }
 
-/* ================= PHOTO HOVER ================= */
+.service-box p{
+  color:#555;
+  line-height:1.7;
+}
+
+/* =========================
+PHOTO SHOWCASE
+========================= */
 
 .photo-hover-section{
   display:flex;
-  height:620px;
-  gap:10px;
+  height:650px;
+  overflow:hidden;
 }
 
 .photo-card{
-  flex:1;
   position:relative;
+  flex:1;
+  transition:0.5s ease;
   overflow:hidden;
-  transition:0.4s ease;
 }
 
 .photo-card:hover{
-  flex:1.25;
+  flex:3;
+}
+
+.photo-hover-section:hover .photo-card:not(:hover){
+  flex:1;
 }
 
 .photo-card img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:transform 0.4s ease;
 }
 
-.photo-card:hover img{
-  transform:scale(1.05);
+.photo-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.8),
+    rgba(0,0,0,0.2)
+  );
 }
 
-/* ================= WHY SECTION ================= */
+.photo-overlay{
+  position:absolute;
+  z-index:2;
+  bottom:40px;
+  left:30px;
+  right:30px;
+
+  color:white;
+
+  opacity:0;
+  transform:translateY(20px);
+
+  transition:0.3s;
+}
+
+.photo-card:hover .photo-overlay{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.photo-overlay h2{
+  font-size:2rem;
+  margin-bottom:8px;
+  font-weight:800;
+}
+
+.photo-overlay h4{
+  color:#ffd54f;
+  margin-bottom:10px;
+}
+
+.photo-overlay p{
+  line-height:1.6;
+}
+
+/* =========================
+WHY US
+========================= */
 
 .why-section{
-  background:#0f0f0f;
-  color:#fff;
-  padding:120px 20px;
-  margin-top:120px;
+  position:relative;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+  url('https://images.unsplash.com/photo-1594671074285-3304745f8c13?q=80&w=1170&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  color:white;
+}
+
+.why-content{
+  max-width:1200px;
+  margin:auto;
+  text-align:center;
 }
 
 .why-title{
-  text-align:center;
   font-size:3rem;
+  margin-bottom:20px;
   font-weight:800;
-  margin-bottom:60px;
+}
+
+.why-divider{
+  width:180px;
+  height:3px;
+  background:#d4af37;
+  margin:0 auto 60px;
 }
 
 .why-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:40px;
-  max-width:1100px;
-  margin:auto;
 }
 
 .why-box{
-  text-align:center;
-}
-
-.why-icon{
-  width:70px;
-  height:70px;
-  margin:0 auto 15px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,0.3);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  color:#fff;
-  font-size:22px;
-}
-
-/* ================= CONTACT ================= */
-
-.contact-section{
-  background:#2e7d32;
-  color:#fff;
-  text-align:center;
-}
-
-.contact-btn{
-  background:#fff;
-  color:#2e7d32;
-  padding:12px 22px;
-  border-radius:6px;
-  font-weight:800;
-  text-decoration:none;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  background:#111;
-  color:#fff;
-  text-align:center;
   padding:20px;
 }
 
-/* ================= MOBILE ================= */
+.why-icon{
+  font-size:42px;
+  margin-bottom:18px;
+}
 
-@media(max-width:768px){
+.why-box h3{
+  margin-bottom:12px;
+  font-size:1.3rem;
+}
+
+.why-box p{
+  line-height:1.7;
+  opacity:0.9;
+}
+
+/* =========================
+REVIEWS
+========================= */
+
+.reviews-section{
+  text-align:center;
+  background:#fff;
+}
+
+.reviews-section h2{
+  font-size:2.5rem;
+  margin-bottom:10px;
+}
+
+.reviews-section p{
+  color:#666;
+  margin-bottom:40px;
+}
+
+.elfsight-wrap{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* =========================
+CONTACT CTA
+========================= */
+
+.contact-section{
+  background:#1b5e20;
+  color:white;
+  text-align:center;
+}
+
+.contact-section h2{
+  font-size:3rem;
+  margin-bottom:20px;
+}
+
+.contact-section p{
+  font-size:1.1rem;
+  margin-bottom:30px;
+  opacity:0.95;
+}
+
+.contact-btn{
+  display:inline-block;
+  background:white;
+  color:#1b5e20;
+  padding:16px 30px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:800;
+  transition:0.3s;
+}
+
+.contact-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:24px;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 992px){
 
   .services-grid{
     grid-template-columns:1fr;
+  }
+
+  .why-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-text h1{
+    font-size:3rem;
+  }
+
+}
+
+@media (max-width:768px){
+
+  body{
+    padding-top:72px;
+  }
+
+  .logo{
+    font-size:16px;
+  }
+
+  .hero{
+    height:75vh;
+  }
+
+  .hero-text h1{
+    font-size:2.2rem;
+  }
+
+  .hero-text p{
+    font-size:1rem;
+  }
+
+  .section{
+    padding:70px 18px;
+  }
+
+  .about-title{
+    font-size:2.2rem;
+  }
+
+  .services-title{
+    font-size:2.3rem;
+  }
+
+  .why-title{
+    font-size:2.3rem;
+  }
+
+  .contact-section h2{
+    font-size:2.2rem;
   }
 
   .photo-hover-section{
@@ -355,27 +569,18 @@ footer{
   }
 
   .photo-card{
-    height:280px;
+    height:300px;
   }
-}
 
-/* ================= RIPPLE ================= */
-
-.ripple{
-  position:absolute;
-  width:20px;
-  height:20px;
-  background:rgba(255,255,255,0.4);
-  border-radius:50%;
-  transform:scale(0);
-  animation:ripple 0.6s linear;
-}
-
-@keyframes ripple{
-  to{
-    transform:scale(15);
-    opacity:0;
+  .photo-card:hover{
+    flex:1;
   }
+
+  .photo-overlay{
+    opacity:1;
+    transform:translateY(0);
+  }
+
 }
 
 </style>
@@ -385,121 +590,275 @@ footer{
 
 <!-- HEADER -->
 <header class="top-header">
+
   <div class="header-container">
-    <div class="logo">Rain Forest Irrigation LLC</div>
-    <a class="header-btn" href="#contact">Call Now</a>
+
+    <div class="logo">
+      Rain Forest Irrigation LLC
+    </div>
+
+    <a href="#contact" class="header-btn">
+      Call Now
+    </a>
+
   </div>
+
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <video autoplay muted loop>
-    <source src="7318623-hd_1920_1080_30fps.mp4">
+
+  <video autoplay muted loop playsinline>
+    <source src="7318623-hd_1920_1080_30fps.mp4" type="video/mp4">
   </video>
 
-  <div class="hero-text">
-    <h1>Reliable Irrigation Services</h1>
-    <p>Veteran Owned • Rio Grande Valley</p>
-    <a class="btn" href="#contact">Get Estimate</a>
+  <div class="hero-content">
+
+    <div class="hero-text">
+
+      <h1>
+        Brownsville’s Trusted Irrigation Specialists
+      </h1>
+
+      <p>
+        Veteran-Owned • Family Operated • Serving The Rio Grande Valley
+      </p>
+
+      <a href="#contact" class="btn">
+        Get A Free Estimate
+      </a>
+
+    </div>
+
   </div>
+
 </section>
 
 <!-- ABOUT -->
 <section class="section about">
+
   <div class="container about-wrap">
 
     <div class="about-left">
-      <div class="about-accent">LICENSED SINCE 2007</div>
-      <h2 class="about-title">Veteran Owned Sprinkler Services in Rio Grande Valley</h2>
-      <p>Professional irrigation design, installation, and repair services.</p>
+
+      <div class="about-accent">
+        LICENSED & OPERATED SINCE 2007
+      </div>
+
+      <h2 class="about-title">
+        Veteran Owned <span>Sprinkler Services</span> in Brownsville
+      </h2>
+
+      <p>
+        Rain Forest Irrigation LLC is a veteran-owned and operated business based in Brownsville, Texas. We specialize in high-quality irrigation solutions tailored to your property's specific needs.
+      </p>
+
+      <p>
+        From sprinkler repairs and leak detection to full irrigation system installations, our team delivers reliable workmanship and long-lasting results.
+      </p>
+
+      <p>
+        We proudly serve homeowners and businesses across the Rio Grande Valley with honest service, professional communication, and dependable scheduling.
+      </p>
+
+      <p class="about-highlight">
+        High Quality Work. Reliable Service. Results You Can Trust.
+      </p>
+
     </div>
 
     <div class="about-right">
-      <img src="https://lh3.googleusercontent.com/p/AF1QipMzUXOfPD2EA62PSjCYQGnSBSwJD3POqcKi7HcL=w800-h600-k-no">
+
+      <img src="https://lh3.googleusercontent.com/p/AF1QipMzUXOfPD2EA62PSjCYQGnSBSwJD3POqcKi7HcL=w800-h600-k-no" alt="Rain Forest Irrigation Owner">
+
     </div>
 
   </div>
+
 </section>
 
 <!-- SERVICES -->
-<section class="section">
+<section class="section services-section">
 
-<h2 class="services-title">Design • Installation • Repairs</h2>
+  <div class="container">
 
-<div class="services-grid">
+    <h2 class="services-title">
+      Our Services
+    </h2>
 
-  <div class="service-box">
-    <div class="icon">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M3 21l18-18"/>
-      </svg>
+    <div class="services-grid">
+
+      <div class="service-box">
+
+        <div class="icon">🔧</div>
+
+        <h3>Sprinkler Repair</h3>
+
+        <p>
+          Fast and reliable sprinkler repairs including broken heads, leaks, valve issues, coverage problems, and system diagnostics.
+        </p>
+
+      </div>
+
+      <div class="service-box">
+
+        <div class="icon">💧</div>
+
+        <h3>System Installation</h3>
+
+        <p>
+          Custom irrigation systems designed for maximum efficiency, proper water coverage, and long-term durability.
+        </p>
+
+      </div>
+
+      <div class="service-box">
+
+        <div class="icon">🧰</div>
+
+        <h3>Routine Maintenance</h3>
+
+        <p>
+          Keep your irrigation system operating at peak performance with inspections, adjustments, and seasonal servicing.
+        </p>
+
+      </div>
+
     </div>
-    <h3>Design</h3>
-    <p>Custom irrigation planning for efficiency.</p>
-  </div>
 
-  <div class="service-box">
-    <div class="icon">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M12 2v20"/>
-      </svg>
-    </div>
-    <h3>Installation</h3>
-    <p>Professional systems built to last.</p>
   </div>
-
-  <div class="service-box">
-    <div class="icon">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M14 7l-7 7"/>
-      </svg>
-    </div>
-    <h3>Repairs</h3>
-    <p>Fast and reliable repair service.</p>
-  </div>
-
-</div>
 
 </section>
 
-<!-- PHOTO SECTION -->
+<!-- PHOTO SHOWCASE -->
 <section class="photo-hover-section">
 
   <div class="photo-card">
+
     <img src="https://lh3.googleusercontent.com/p/AF1QipNHElX9r2vNwQRm1yX0C0Qmi6l7hJzzr6R5qNdY=w900-h600-k-no">
+
+    <div class="photo-overlay">
+
+      <h2>SPRINKLER REPAIR</h2>
+
+      <h4>Fast & Reliable Service</h4>
+
+      <p>
+        Professional sprinkler repair solutions designed to keep your landscape healthy and efficient.
+      </p>
+
+    </div>
+
   </div>
 
   <div class="photo-card">
+
     <img src="https://lh3.googleusercontent.com/p/AF1QipNd2ogVnls4FEtk14OvsF28gxEEydgr9w2MMw-1=w900-h600-k-no">
+
+    <div class="photo-overlay">
+
+      <h2>INSTALLATION</h2>
+
+      <h4>Custom System Design</h4>
+
+      <p>
+        High-quality irrigation systems tailored specifically for your property and landscape.
+      </p>
+
+    </div>
+
   </div>
 
   <div class="photo-card">
+
     <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJNz8byRPtnyeSUZ_OHwu7UbzJ559Ulg_ZDRe71ob0zxopxAXQL0txJy8Q5o1PZ2pqunZUhPAkyNUPt-xcC28Ld2wOpyx2AZ9Y92lNDE7MEvgl9ePmRLZSSE70YI--qsbQiM-iOSwZXHuz=w900-h600-k-no">
+
+    <div class="photo-overlay">
+
+      <h2>MAINTENANCE</h2>
+
+      <h4>Keep Systems Running Smoothly</h4>
+
+      <p>
+        Prevent costly issues and maximize performance with routine maintenance services.
+      </p>
+
+    </div>
+
   </div>
 
 </section>
 
-<!-- WHY -->
-<section class="why-section">
+<!-- WHY CHOOSE US -->
+<section class="section why-section">
 
-  <h2 class="why-title">Why Choose Us</h2>
+  <div class="why-content">
 
-  <div class="why-grid">
+    <h2 class="why-title">
+      Why Choose Us
+    </h2>
 
-    <div class="why-box">
-      <div class="why-icon">⚡</div>
-      <p>Fast Service</p>
+    <div class="why-divider"></div>
+
+    <div class="why-grid">
+
+      <div class="why-box">
+        <div class="why-icon">⚡</div>
+        <h3>Fast Response</h3>
+        <p>Quick scheduling and dependable service when you need it most.</p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">✓</div>
+        <h3>Veteran-Owned</h3>
+        <p>Built on professionalism, reliability, and strong work ethic.</p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">💧</div>
+        <h3>Water Efficient</h3>
+        <p>Smart irrigation solutions designed to reduce water waste.</p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">🛠</div>
+        <h3>Experienced Team</h3>
+        <p>Years of hands-on irrigation and sprinkler system experience.</p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">⭐</div>
+        <h3>Trusted Locally</h3>
+        <p>Proudly serving Brownsville and the Rio Grande Valley community.</p>
+      </div>
+
+      <div class="why-box">
+        <div class="why-icon">🏡</div>
+        <h3>Clean Work</h3>
+        <p>We respect your property and leave every job site clean.</p>
+      </div>
+
     </div>
 
-    <div class="why-box">
-      <div class="why-icon">✓</div>
-      <p>Trusted Experts</p>
-    </div>
+  </div>
 
-    <div class="why-box">
-      <div class="why-icon">💧</div>
-      <p>Water Efficient</p>
-    </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews-section">
+
+  <h2>
+    Google Reviewed & Trusted
+  </h2>
+
+  <p>
+    See what our clients are saying
+  </p>
+
+  <div class="elfsight-wrap">
+
+    <div class="elfsight-app-7303d924-e97c-4c9c-a946-c2bffc65dd6e"
+    data-elfsight-app-lazy></div>
 
   </div>
 
@@ -507,45 +866,28 @@ footer{
 
 <!-- CONTACT -->
 <section class="section contact-section" id="contact">
-  <h2>Call Now</h2>
-  <a class="contact-btn" href="tel:+1956XXXXXXX">Contact</a>
+
+  <h2>
+    Need Sprinkler Service?
+  </h2>
+
+  <p>
+    Call today for fast, reliable irrigation services in Brownsville and throughout the Rio Grande Valley.
+  </p>
+
+  <a href="tel:+1956XXXXXXX" class="contact-btn">
+    Call (956) XXX-XXXX
+  </a>
+
 </section>
 
-<footer>© 2026 Rain Forest Irrigation LLC</footer>
+<!-- FOOTER -->
+<footer>
+  © 2026 Rain Forest Irrigation LLC
+</footer>
 
-<script>
-
-/* SCROLL ANIMATION */
-const boxes=document.querySelectorAll('.service-box');
-
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-    }
-  });
-});
-
-boxes.forEach(b=>observer.observe(b));
-
-/* RIPPLE */
-document.querySelectorAll('.service-box').forEach(box=>{
-  box.addEventListener('click',function(e){
-
-    const ripple=document.createElement('span');
-    ripple.classList.add('ripple');
-
-    const rect=this.getBoundingClientRect();
-    ripple.style.left=(e.clientX-rect.left)+'px';
-    ripple.style.top=(e.clientY-rect.top)+'px';
-
-    this.appendChild(ripple);
-
-    setTimeout(()=>ripple.remove(),600);
-  });
-});
-
-</script>
+<!-- ELFSIGHT -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
 
 </body>
 </html>
