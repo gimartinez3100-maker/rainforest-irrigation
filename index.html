@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Sprinkler Repair & Irrigation Services in Brownsville TX | Rain Forest Irrigation</title>
+<title>Sprinkler Repair &amp; Irrigation Services in Brownsville TX | Rain Forest Irrigation</title>
 
 <meta name="description"
 content="Veteran-owned sprinkler repair and irrigation installation company serving Brownsville and the Rio Grande Valley.">
@@ -12,7 +12,7 @@ content="Veteran-owned sprinkler repair and irrigation installation company serv
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 
 <style>
 
@@ -293,7 +293,7 @@ SERVICES
 }
 
 /* =========================
-PHOTO SHOWCASE
+PHOTO SHOWCASE (FIXED LAYERS + BETTER HOVER)
 ========================= */
 
 .photo-hover-section{
@@ -318,19 +318,37 @@ PHOTO SHOWCASE
 }
 
 .photo-card img{
+  position:relative;
+  z-index:0;
   width:100%;
   height:100%;
   object-fit:cover;
+  transform:scale(1);
+  transition:transform 0.6s ease;
+}
+
+.photo-card:hover img{
+  transform:scale(1.06);
 }
 
 .photo-card::after{
   content:"";
   position:absolute;
   inset:0;
+  z-index:1;
   background:linear-gradient(
     to top,
-    rgba(0,0,0,0.8),
-    rgba(0,0,0,0.2)
+    rgba(0,0,0,0.82),
+    rgba(0,0,0,0.10)
+  );
+  transition:0.35s ease;
+}
+
+.photo-card:hover::after{
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.88),
+    rgba(0,0,0,0.20)
   );
 }
 
@@ -345,8 +363,7 @@ PHOTO SHOWCASE
 
   opacity:0;
   transform:translateY(20px);
-
-  transition:0.3s;
+  transition:0.35s ease;
 }
 
 .photo-card:hover .photo-overlay{
@@ -358,15 +375,18 @@ PHOTO SHOWCASE
   font-size:2rem;
   margin-bottom:8px;
   font-weight:800;
+  letter-spacing:0.5px;
 }
 
 .photo-overlay h4{
   color:#ffd54f;
   margin-bottom:10px;
+  font-weight:700;
 }
 
 .photo-overlay p{
   line-height:1.6;
+  max-width:520px;
 }
 
 /* =========================
@@ -378,7 +398,7 @@ WHY US
 
   background:
   linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
-  url('https://images.unsplash.com/photo-1594671074285-3304745f8c13?q=80&w=1170&auto=format&fit=crop');
+  url('https://images.unsplash.com/photo-1594671074285-3304745f8c13?q=80&amp;w=1170&amp;auto=format&amp;fit=crop');
 
   background-size:cover;
   background-position:center;
@@ -431,7 +451,7 @@ WHY US
 }
 
 /* =========================
-REVIEWS
+REVIEWS (FIXED HEIGHT + LOADING FALLBACK)
 ========================= */
 
 .reviews-section{
@@ -452,6 +472,20 @@ REVIEWS
 .elfsight-wrap{
   max-width:1200px;
   margin:auto;
+  min-height:320px; /* ensures widget has space to render */
+  position:relative;
+}
+
+.reviews-loading{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:#444;
+  opacity:0.7;
+  pointer-events:none;
 }
 
 /* =========================
@@ -642,7 +676,7 @@ MOBILE
     <div class="about-left">
 
       <div class="about-accent">
-        LICENSED & OPERATED SINCE 2007
+        LICENSED &amp; OPERATED SINCE 2007
       </div>
 
       <h2 class="about-title">
@@ -735,13 +769,13 @@ MOBILE
 
   <div class="photo-card">
 
-    <img src="https://lh3.googleusercontent.com/p/AF1QipNHElX9r2vNwQRm1yX0C0Qmi6l7hJzzr6R5qNdY=w900-h600-k-no">
+    <img src="https://lh3.googleusercontent.com/p/AF1QipNHElX9r2vNwQRm1yX0C0Qmi6l7hJzzr6R5qNdY=w900-h600-k-no" alt="Sprinkler repair service">
 
     <div class="photo-overlay">
 
       <h2>SPRINKLER REPAIR</h2>
 
-      <h4>Fast & Reliable Service</h4>
+      <h4>Fast &amp; Reliable Service</h4>
 
       <p>
         Professional sprinkler repair solutions designed to keep your landscape healthy and efficient.
@@ -753,7 +787,7 @@ MOBILE
 
   <div class="photo-card">
 
-    <img src="https://lh3.googleusercontent.com/p/AF1QipNd2ogVnls4FEtk14OvsF28gxEEydgr9w2MMw-1=w900-h600-k-no">
+    <img src="https://lh3.googleusercontent.com/p/AF1QipNd2ogVnls4FEtk14OvsF28gxEEydgr9w2MMw-1=w900-h600-k-no" alt="Irrigation installation service">
 
     <div class="photo-overlay">
 
@@ -771,7 +805,7 @@ MOBILE
 
   <div class="photo-card">
 
-    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJNz8byRPtnyeSUZ_OHwu7UbzJ559Ulg_ZDRe71ob0zxopxAXQL0txJy8Q5o1PZ2pqunZUhPAkyNUPt-xcC28Ld2wOpyx2AZ9Y92lNDE7MEvgl9ePmRLZSSE70YI--qsbQiM-iOSwZXHuz=w900-h600-k-no">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJNz8byRPtnyeSUZ_OHwu7UbzJ559Ulg_ZDRe71ob0zxopxAXQL0txJy8Q5o1PZ2pqunZUhPAkyNUPt-xcC28Ld2wOpyx2AZ9Y92lNDE7MEvgl9ePmRLZSSE70YI--qsbQiM-iOSwZXHuz=w900-h600-k-no" alt="Sprinkler maintenance service">
 
     <div class="photo-overlay">
 
@@ -848,7 +882,7 @@ MOBILE
 <section class="section reviews-section">
 
   <h2>
-    Google Reviewed & Trusted
+    Google Reviewed &amp; Trusted
   </h2>
 
   <p>
@@ -857,8 +891,13 @@ MOBILE
 
   <div class="elfsight-wrap">
 
-    <div class="elfsight-app-7303d924-e97c-4c9c-a946-c2bffc65dd6e"
-    data-elfsight-app-lazy></div>
+    <div class="reviews-loading">Loading reviews…</div>
+
+    <!-- Option A: Load immediately (recommended if you want "live" without delays) -->
+    <div class="elfsight-app-7303d924-e97c-4c9c-a946-c2bffc65dd6e"></div>
+
+    <!-- Option B: Keep lazy loading (uncomment if you prefer) -->
+    <!-- <div class="elfsight-app-7303d924-e97c-4c9c-a946-c2bffc65dd6e" data-elfsight-app-lazy></div> -->
 
   </div>
 
@@ -875,6 +914,7 @@ MOBILE
     Call today for fast, reliable irrigation services in Brownsville and throughout the Rio Grande Valley.
   </p>
 
+  <!-- REPLACE WITH YOUR REAL NUMBER -->
   <a href="tel:+1956XXXXXXX" class="contact-btn">
     Call (956) XXX-XXXX
   </a>
@@ -889,5 +929,30 @@ MOBILE
 <!-- ELFSIGHT -->
 <script src="https://elfsightcdn.com/platform.js" async></script>
 
+<script>
+  // Remove loading text once Elfsight injects content
+  window.addEventListener("load", () => {
+    const wrap = document.querySelector(".elfsight-wrap");
+    const loader = document.querySelector(".reviews-loading");
+    if (!wrap || !loader) return;
+
+    const observer = new MutationObserver(() => {
+      // Elfsight injects an iframe or divs; when something appears, hide loader
+      if (wrap.querySelector("iframe") || wrap.querySelector(".elfsight-widget")) {
+        loader.style.display = "none";
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(wrap, { childList: true, subtree: true });
+
+    // fallback timeout (in case of blockers)
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 6000);
+  });
+</script>
+
 </body>
 </html>
+``
