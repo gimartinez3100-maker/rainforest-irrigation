@@ -254,7 +254,8 @@ SERVICES
   border-radius:14px;
   box-shadow:0 8px 30px rgba(0,0,0,0.08);
   transition:0.3s;
-  border-top: 5px solid #2e7d32;
+
+  border-top:5px solid #2e7d32; /* ✅ your solid green bar */
 }
 
 .service-box:hover{
@@ -312,51 +313,7 @@ SERVICES: SOLID TOP BAR ONLY + ANIMATED GRADIENT RING (SIDES/BOTTOM)
   transition:0.35s ease;
 }
 
-/* animated gradient ring (we will hide the TOP part of it) */
-.service-box::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:var(--svc-radius);
-  padding:var(--svc-ring);
 
-  background:linear-gradient(120deg,#2e7d32,#1e88e5,#2e7d32,#1e88e5);
-  background-size:400% 400%;
-  animation:borderShift 8s linear infinite;
-
-  /* ring-only mask */
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-
-  /* ✅ hide gradient on the TOP edge (top bar + ring thickness) */
-  clip-path: inset(calc(var(--svc-topbar) + var(--svc-ring)) 0 0 0);
-
-  pointer-events:none;
-  z-index:0;
-}
-
-/* solid green bar on top (the ONLY thing visible on the top edge) */
-.service-box::after{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:var(--svc-topbar);
-  background:#2e7d32;
-
-  /* keep rounded corners */
-  border-top-left-radius:var(--svc-radius);
-  border-top-right-radius:var(--svc-radius);
-
-  z-index:1;
-  pointer-events:none;
-}
-
-/* keep all content above the border layers */
 .service-box > *{
   position:relative;
   z-index:2;
@@ -368,12 +325,6 @@ SERVICES: SOLID TOP BAR ONLY + ANIMATED GRADIENT RING (SIDES/BOTTOM)
   box-shadow:0 20px 50px rgba(0,0,0,0.18);
 }
 
-@keyframes borderShift{
-  0%   { background-position:0% 50%; }
-  50%  { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-  
 .service-box{
   position:relative;
   overflow:hidden;
@@ -381,51 +332,9 @@ SERVICES: SOLID TOP BAR ONLY + ANIMATED GRADIENT RING (SIDES/BOTTOM)
   transition:0.4s ease;
 }
 
-/* FLOW background */
-.service-box::before{
-  content:"";
-  position:absolute;
-  inset:-60px;
-  background:linear-gradient(120deg,#2e7d32,#1e88e5,#2e7d32);
-  background-size:200% 200%;
-  opacity:0;
-  filter:blur(18px);
-  transition:opacity 0.4s ease;
-  animation:serviceFlow 3.5s linear infinite;
-  z-index:0;
-}
-
-/* GLOW border */
-.service-box::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:14px;
-  padding:2px;
-  background:linear-gradient(120deg,#2e7d32,#1e88e5,#2e7d32);
-  opacity:0;
-  transition:0.4s ease;
-  z-index:1;
-
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-}
-
-/* keep content above both layers */
 .service-box > *{
   position:relative;
   z-index:2;
-}
-
-.service-box:hover::before{
-  opacity:0.55;
-}
-
-.service-box:hover::after{
-  opacity:1;
 }
 
 .service-box:hover{
@@ -433,11 +342,6 @@ SERVICES: SOLID TOP BAR ONLY + ANIMATED GRADIENT RING (SIDES/BOTTOM)
   box-shadow:0 20px 50px rgba(0,0,0,0.18);
 }
 
-@keyframes serviceFlow{
-  0%   { background-position:0% 50%; }
-  50%  { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
 
 /* =========================
 SERVICES: WHITE INSIDE + VIBRANT GRADIENT EDGES
@@ -469,12 +373,6 @@ SERVICES: WHITE INSIDE + VIBRANT GRADIENT EDGES
 
   pointer-events:none;
   z-index:0;
-}
-
-/* Keep all content above the border */
-.service-box > *{
-  position:relative;
-  z-index:1;
 }
 
 /* Optional: slight glow on hover (still white inside) */
