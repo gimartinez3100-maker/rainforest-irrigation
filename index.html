@@ -292,64 +292,85 @@ SERVICES
 }
 
 /* =========================
-SERVICES: TOP GREEN BAR + ANIMATED GRADIENT EDGE
+SERVICES: SOLID TOP BAR ONLY + ANIMATED GRADIENT RING (SIDES/BOTTOM)
 ========================= */
 
-/* Keep your original service-box styling, but ADD/ENSURE these: */
+/* easy knobs */
+:root{
+  --svc-radius: 14px;
+  --svc-topbar: 6px;     /* height of solid green bar */
+  --svc-ring: 3px;       /* thickness of gradient border ring */
+}
+
+/* base card */
 .service-box{
   position:relative;
   overflow:hidden;
-  border-radius:14px;
+  border-radius:var(--svc-radius);
   background:#fff;                 /* inside stays white */
-  border-top:5px solid #2e7d32;    /* ✅ brings back the green top bar */
+  transition:0.35s ease;
 }
 
-/* Animated gradient border around ALL edges */
+/* animated gradient ring (we will hide the TOP part of it) */
 .service-box::before{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:14px;
-  padding:3px;                      /* thickness of the animated border ring */
+  border-radius:var(--svc-radius);
+  padding:var(--svc-ring);
 
-  background: linear-gradient(
-    120deg,
-    #2e7d32,
-    #1e88e5,
-    #2e7d32,
-    #1e88e5
-  );
-  background-size: 400% 400%;
-  animation: borderShift 7s linear infinite;
+  background:linear-gradient(120deg,#2e7d32,#1e88e5,#2e7d32,#1e88e5);
+  background-size:400% 400%;
+  animation:borderShift 8s linear infinite;
 
-  /* Mask so only the edges show (ring), not the inside */
+  /* ring-only mask */
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+
+  /* ✅ hide gradient on the TOP edge (top bar + ring thickness) */
+  clip-path: inset(calc(var(--svc-topbar) + var(--svc-ring)) 0 0 0);
 
   pointer-events:none;
   z-index:0;
 }
 
-/* Keep all text/icons ABOVE the border ring */
-.service-box > *{
-  position:relative;
+/* solid green bar on top (the ONLY thing visible on the top edge) */
+.service-box::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:var(--svc-topbar);
+  background:#2e7d32;
+
+  /* keep rounded corners */
+  border-top-left-radius:var(--svc-radius);
+  border-top-right-radius:var(--svc-radius);
+
   z-index:1;
+  pointer-events:none;
 }
 
-/* Optional: slightly stronger effect on hover */
+/* keep all content above the border layers */
+.service-box > *{
+  position:relative;
+  z-index:2;
+}
+
+/* optional hover lift (keep if you like it) */
 .service-box:hover{
   transform:translateY(-10px);
   box-shadow:0 20px 50px rgba(0,0,0,0.18);
 }
 
-/* Smooth animated movement around edges */
 @keyframes borderShift{
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0%   { background-position:0% 50%; }
+  50%  { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
 }
   
 .service-box{
