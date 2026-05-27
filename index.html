@@ -254,8 +254,7 @@ SERVICES
   border-radius:14px;
   box-shadow:0 8px 30px rgba(0,0,0,0.08);
   transition:0.3s;
-
-  border-top:5px solid #2e7d32; /* ✅ your solid green bar */
+  border-top:5px solid #2e7d32;
 }
 
 .service-box:hover{
@@ -293,38 +292,6 @@ SERVICES
   line-height:1.7;
 }
 
-/* =========================
-SERVICES: SOLID TOP BAR ONLY + ANIMATED GRADIENT RING (SIDES/BOTTOM)
-========================= */
-
-/* easy knobs */
-:root{
-  --svc-radius: 14px;
-  --svc-topbar: 6px;     /* height of solid green bar */
-  --svc-ring: 3px;       /* thickness of gradient border ring */
-}
-
-/* base card */
-.service-box{
-  position:relative;
-  overflow:hidden;
-  border-radius:var(--svc-radius);
-  background:#fff;                 /* inside stays white */
-  transition:0.35s ease;
-}
-
-
-.service-box > *{
-  position:relative;
-  z-index:2;
-}
-
-/* optional hover lift (keep if you like it) */
-.service-box:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.18);
-}
-
 .service-box{
   position:relative;
   overflow:hidden;
@@ -332,9 +299,51 @@ SERVICES: SOLID TOP BAR ONLY + ANIMATED GRADIENT RING (SIDES/BOTTOM)
   transition:0.4s ease;
 }
 
+/* FLOW background */
+.service-box::before{
+  content:"";
+  position:absolute;
+  inset:-60px;
+  background:linear-gradient(120deg,#2e7d32,#1e88e5,#2e7d32);
+  background-size:200% 200%;
+  opacity:0;
+  filter:blur(18px);
+  transition:opacity 0.4s ease;
+  animation:serviceFlow 3.5s linear infinite;
+  z-index:0;
+}
+
+/* GLOW border */
+.service-box::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  padding:2px;
+  background:linear-gradient(120deg,#2e7d32,#1e88e5,#2e7d32);
+  opacity:0;
+  transition:0.4s ease;
+  z-index:1;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+}
+
+/* keep content above both layers */
 .service-box > *{
   position:relative;
   z-index:2;
+}
+
+.service-box:hover::before{
+  opacity:0.55;
+}
+
+.service-box:hover::after{
+  opacity:1;
 }
 
 .service-box:hover{
@@ -342,44 +351,11 @@ SERVICES: SOLID TOP BAR ONLY + ANIMATED GRADIENT RING (SIDES/BOTTOM)
   box-shadow:0 20px 50px rgba(0,0,0,0.18);
 }
 
-
-/* =========================
-SERVICES: WHITE INSIDE + VIBRANT GRADIENT EDGES
-========================= */
-
-.service-box{
-  position:relative;
-  overflow:hidden;
-  border-radius:14px;         /* match your current rounding */
-  background:#fff;            /* keep inside white */
+@keyframes serviceFlow{
+  0%   { background-position:0% 50%; }
+  50%  { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
 }
-
-/* Gradient border ring (only edges) */
-.service-box::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:14px;
-  padding:3px; /* border thickness */
-  background:linear-gradient(120deg,#2e7d32,#1e88e5,#2e7d32);
-  opacity:1; /* keep always visible */
-
-  /* mask so only the border shows, not the center */
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-
-  pointer-events:none;
-  z-index:0;
-}
-
-/* Optional: slight glow on hover (still white inside) */
-.service-box:hover::before{
-  filter:drop-shadow(0 0 12px rgba(30,136,229,0.35));
-}
-  
   
 /* =========================
 PHOTO SHOWCASE (FIXED LAYERS + BETTER HOVER)
@@ -817,10 +793,10 @@ MOBILE
 
         <div class="icon">🔧</div>
 
-        <h3>Design</h3>
+        <h3>Sprinkler Repair</h3>
 
         <p>
-         Custom-made sprinkler system designs tailored to your property for optimal coverage, efficiency, and long-term performance.
+          Fast and reliable sprinkler repairs including broken heads, leaks, valve issues, coverage problems, and system diagnostics.
         </p>
 
       </div>
@@ -829,7 +805,7 @@ MOBILE
 
         <div class="icon">💧</div>
 
-        <h3>Installations</h3>
+        <h3>System Installation</h3>
 
         <p>
           Custom irrigation systems designed for maximum efficiency, proper water coverage, and long-term durability.
@@ -841,10 +817,10 @@ MOBILE
 
         <div class="icon">🧰</div>
 
-        <h3>Repairs</h3>
+        <h3>Routine Maintenance</h3>
 
         <p>
-          Fast, reliable sprinkler repairs for broken heads, leaks, valve issues, coverage problems, and full system diagnostics to keep your system running efficiently.
+          Keep your irrigation system operating at peak performance with inspections, adjustments, and seasonal servicing.
         </p>
 
       </div>
