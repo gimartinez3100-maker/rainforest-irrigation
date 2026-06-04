@@ -57,7 +57,26 @@ HEADER
   justify-content:space-between;
   align-items:center;
 }
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
+.lang-toggle{
+  background:#1b2a41;
+  color:white;
+  border:none;
+  padding:10px 14px;
+  border-radius:6px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.lang-toggle:hover{
+  background:#0f1b2d;
+}
 
 .logo{
   display:flex;
@@ -722,6 +741,16 @@ MOBILE
     transform:translateY(0);
   }
 
+  .header-actions{
+  gap:8px;
+}
+
+.lang-toggle{
+  padding:8px 10px;
+  font-size:13px;
+  white-space:nowrap;
+  flex-shrink:0;
+
 }
 
 </style>
@@ -736,13 +765,16 @@ MOBILE
    
 <div class="logo">
   <img src="Images/Logo.png" alt="Rain Forest Irrigation LLC Logo">
-  <span>Rain Forest Irrigation LLC</span>
+<span id="company-name">Rain Forest Irrigation LLC</span>
 </div>
+    
+<div class="header-actions">
+  <button class="lang-toggle" onclick="toggleLanguage()">ES</button>
 
-    <a href="#contact" class="header-btn">
-      Call Now
-    </a>
-
+  <a href="#contact" class="header-btn" id="header-call">
+    Call Now
+  </a>
+</div>
   </div>
 
 </header>
@@ -758,17 +790,17 @@ MOBILE
 
     <div class="hero-text">
 
-      <h1>
-        Brownsville’s Trusted Irrigation Specialists
-      </h1>
+   <h1 id="hero-title">
+  Brownsville’s Trusted Irrigation Specialists
+</h1>
 
-      <p>
-        Veteran-Owned • Family Operated • Serving The Rio Grande Valley
-      </p>
+<p id="hero-subtitle">
+  Veteran-Owned • Family Operated • Serving The Rio Grande Valley
+</p>
 
-      <a href="#contact" class="btn">
-        Get A Free Estimate
-      </a>
+<a href="#contact" class="btn" id="hero-btn">
+  Get A Free Estimate
+</a>
 
     </div>
 
@@ -787,9 +819,9 @@ MOBILE
         LICENSED &amp; OPERATED SINCE 2007
       </div>
 
-      <h2 class="about-title">
-        Veteran Owned Sprinkler Services in Brownsville
-      </h2>
+<h2 class="about-title" id="about-title">
+  Veteran Owned Sprinkler Services in Brownsville
+</h2>
 
       <p>
         Rain Forest Irrigation LLC is a veteran-owned and operated business based in Brownsville, Texas. We specialize in high-quality irrigation solutions tailored to your property's specific needs.
@@ -824,9 +856,10 @@ MOBILE
 
   <div class="container">
 
-    <h2 class="services-title">
-      Our Services
-    </h2>
+<h2 class="services-title" id="services-title">
+  Our Services
+</h2>
+
 
     <div class="services-grid">
 
@@ -936,9 +969,9 @@ MOBILE
 
   <div class="why-content">
 
-    <h2 class="why-title">
-      Why Choose Us
-    </h2>
+ <h2 class="why-title" id="why-title">
+  Why Choose Us
+</h2>
 
     <div class="why-divider"></div>
 
@@ -989,13 +1022,13 @@ MOBILE
 <!-- REVIEWS -->
 <section class="section reviews-section">
 
-  <h2>
-    Google Reviewed &amp; Trusted
-  </h2>
+<h2 id="reviews-title">
+  Google Reviewed & Trusted
+</h2>
 
-  <p>
-    See what our clients are saying
-  </p>
+<p id="reviews-subtitle">
+  See what our clients are saying
+</p>
 
   <div class="elfsight-wrap">
 
@@ -1014,18 +1047,22 @@ MOBILE
 <!-- CONTACT -->
 <section class="section contact-section" id="contact">
 
-  <h2>
-    Need Sprinkler Service?
-  </h2>
 
-  <p>
-    Call today for fast, reliable irrigation services in Brownsville and throughout the Rio Grande Valley.
-  </p>
+<h2 id="contact-title">
+  Need Sprinkler Service?
+</h2>
+
+
+
+<p id="contact-text">
+  Call today for fast, reliable irrigation services in Brownsville and throughout the Rio Grande Valley.
+</p>
+
 
   <!-- REPLACE WITH YOUR REAL NUMBER -->
-  <a href="tel:+1956XXXXXXX" class="contact-btn">
-    Call (956) XXX-XXXX
-  </a>
+<a href="tel:+1956XXXXXXX" class="contact-btn" id="contact-btn">
+  Call (956) XXX-XXXX
+</a>
 
 </section>
 
@@ -1045,7 +1082,6 @@ MOBILE
     if (!wrap || !loader) return;
 
     const observer = new MutationObserver(() => {
-      // Elfsight injects an iframe or divs; when something appears, hide loader
       if (wrap.querySelector("iframe") || wrap.querySelector(".elfsight-widget")) {
         loader.style.display = "none";
         observer.disconnect();
@@ -1054,12 +1090,54 @@ MOBILE
 
     observer.observe(wrap, { childList: true, subtree: true });
 
-    // fallback timeout (in case of blockers)
     setTimeout(() => {
       loader.style.display = "none";
     }, 6000);
   });
 </script>
 
+<script>
+  let currentLanguage = "en";
+
+  function toggleLanguage() {
+    if (currentLanguage === "en") {
+      document.getElementById("company-name").textContent = "Rain Forest Irrigation LLC";
+      document.getElementById("header-call").textContent = "Llame Ahora";
+      document.getElementById("hero-title").textContent = "Especialistas Confiables en Irrigación en Brownsville";
+      document.getElementById("hero-subtitle").textContent = "Propiedad de Veterano • Operado por Familia • Sirviendo al Valle del Río Grande";
+      document.getElementById("hero-btn").textContent = "Obtenga Un Estimado Gratis";
+      document.getElementById("about-title").textContent = "Servicios de Rociadores de Propiedad de Veterano en Brownsville";
+      document.getElementById("services-title").textContent = "Nuestros Servicios";
+      document.getElementById("why-title").textContent = "Por Qué Elegirnos";
+      document.getElementById("reviews-title").textContent = "Reseñas de Google y de Confianza";
+      document.getElementById("reviews-subtitle").textContent = "Vea lo que dicen nuestros clientes";
+      document.getElementById("contact-title").textContent = "¿Necesita Servicio de Rociadores?";
+      document.getElementById("contact-text").textContent = "Llame hoy para servicios de irrigación rápidos y confiables en Brownsville y en todo el Valle del Río Grande.";
+      document.getElementById("contact-btn").textContent = "Llame al (956) XXX-XXXX";
+
+      document.querySelector(".lang-toggle").textContent = "EN";
+      currentLanguage = "es";
+    } else {
+      document.getElementById("company-name").textContent = "Rain Forest Irrigation LLC";
+      document.getElementById("header-call").textContent = "Call Now";
+      document.getElementById("hero-title").textContent = "Brownsville’s Trusted Irrigation Specialists";
+      document.getElementById("hero-subtitle").textContent = "Veteran-Owned • Family Operated • Serving The Rio Grande Valley";
+      document.getElementById("hero-btn").textContent = "Get A Free Estimate";
+      document.getElementById("about-title").textContent = "Veteran Owned Sprinkler Services in Brownsville";
+      document.getElementById("services-title").textContent = "Our Services";
+      document.getElementById("why-title").textContent = "Why Choose Us";
+      document.getElementById("reviews-title").textContent = "Google Reviewed & Trusted";
+      document.getElementById("reviews-subtitle").textContent = "See what our clients are saying";
+      document.getElementById("contact-title").textContent = "Need Sprinkler Service?";
+      document.getElementById("contact-text").textContent = "Call today for fast, reliable irrigation services in Brownsville and throughout the Rio Grande Valley.";
+      document.getElementById("contact-btn").textContent = "Call (956) XXX-XXXX";
+
+      document.querySelector(".lang-toggle").textContent = "ES";
+      currentLanguage = "en";
+    }
+  }
+</script>
+
 </body>
 </html>
+``
