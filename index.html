@@ -58,10 +58,20 @@ HEADER
   align-items:center;
 }
 
+
 .logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
   font-size:20px;
   font-weight:800;
   color:#1b2a41;
+}
+
+.logo img{
+  height:55px;
+  width:auto;
+  display:block;
 }
 
 .header-btn{
@@ -121,6 +131,13 @@ HERO
 .hero-text{
   max-width:900px;
   color:white;
+}
+  
+.hero-logo{
+  width:220px;
+  height:auto;
+  margin:0 auto 25px;
+  display:block;
 }
 
 .hero-text h1{
@@ -695,10 +712,11 @@ MOBILE
 <header class="top-header">
 
   <div class="header-container">
-
-    <div class="logo">
-      Rain Forest Irrigation LLC
-    </div>
+   
+<div class="logo">
+  <img src="Images/Logo.png" alt="Rain Forest Irrigation LLC Logo">
+  <span>Rain Forest Irrigation LLC</span>
+</div>
 
     <a href="#contact" class="header-btn">
       Call Now
